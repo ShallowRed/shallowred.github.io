@@ -594,7 +594,7 @@
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>4.6s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>4.3s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -611,14 +611,14 @@
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> AvatarDropdown</h2>
       <div class="badges">
-        <label for="c-0-design-system-briques-espace-membre-avatardropdown-props" class="badge ok as-toggle">2 prop types</label>
+        <label for="c-0-design-system-briques-webapp-avatardropdown-props" class="badge ok as-toggle">2 prop types</label>
         
-        <label for="c-0-design-system-briques-espace-membre-avatardropdown-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-0-design-system-briques-webapp-avatardropdown-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
     </div>
-    <div class="meta" title="./stories/briques/webapp/AvatarDropdown.stories.tsx">design-system-briques-espace-membre-avatardropdown · ./stories/briques/webapp/AvatarDropdown.stories.tsx</div>
+    <div class="meta" title="./stories/briques/webapp/AvatarDropdown.stories.tsx">design-system-briques-webapp-avatardropdown · ./stories/briques/webapp/AvatarDropdown.stories.tsx</div>
     
     <div class="hint">Déclencheur de menu utilisateur (avatar + nom + entreprise) ouvrant un `DropdownMenu` shadcn. Utilisé en haut à droite du header global (`EspaceMembreHeader`).</div>
     
@@ -627,10 +627,10 @@
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-0-design-system-briques-espace-membre-avatardropdown-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-0-design-system-briques-webapp-avatardropdown-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-0-design-system-briques-espace-membre-avatardropdown-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-0-design-system-briques-webapp-avatardropdown-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -1515,13 +1515,13 @@ nomUtilisateur: string</code></pre>
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;LayoutComplet&quot; component.
-  162 | }
-  163 |
-&gt; 164 | const meta: Meta&lt;typeof LayoutComplet&gt; = {
+  173 | }
+  174 |
+&gt; 175 | const meta: Meta&lt;typeof LayoutComplet&gt; = {
       | ^
-  165 |   title: &#39;Design system/Modèles de page/Webapp/Layout complet&#39;,
-  166 |   component: LayoutComplet,
-  167 |   tags: [&#39;autodocs&#39;],
+  176 |   title: &#39;Design system/Modèles de page/Webapp/Layout complet&#39;,
+  177 |   component: LayoutComplet,
+  178 |   tags: [&#39;autodocs&#39;],
 
 ./stories/modeles-pages/webapp/LayoutComplet.stories.tsx:
 import type { Meta, StoryObj } from &#39;@storybook/nextjs-vite&#39;;
@@ -1625,20 +1625,19 @@ function LayoutComplet() {
           /&gt;
           &lt;main
             className=&quot;@container/main min-h-0 flex-1 overflow-auto bg-dsfr-background-alt-grey&quot;
-            role=&quot;main&quot;
           &gt;
             &lt;div className=&quot;mx-auto flex w-full max-w-7xl flex-col items-start&quot;&gt;
-              &lt;PageHeader
-                icon={BuildingIcon}
-                title=&quot;Informations entreprise&quot;
-                actions={
-                  &lt;Button type=&quot;button&quot; size=&quot;sm&quot;&gt;
-                    &lt;RiPencilLine aria-hidden className=&quot;size-4&quot; /&gt;
-                    Modifier
-                  &lt;/Button&gt;
-                }
-                tabs={
-                  &lt;Tabs defaultValue=&quot;informations&quot;&gt;
+              &lt;Tabs defaultValue=&quot;informations&quot; className=&quot;contents&quot;&gt;
+                &lt;PageHeader
+                  icon={BuildingIcon}
+                  title=&quot;Informations entreprise&quot;
+                  actions={
+                    &lt;Button type=&quot;button&quot; size=&quot;sm&quot;&gt;
+                      &lt;RiPencilLine aria-hidden className=&quot;size-4&quot; /&gt;
+                      Modifier
+                    &lt;/Button&gt;
+                  }
+                  tabs={
                     &lt;TabsList variant=&quot;line&quot;&gt;
                       &lt;TabsTrigger value=&quot;informations&quot;&gt;
                         &lt;RiBuildingLine /&gt;
@@ -1653,32 +1652,44 @@ function LayoutComplet() {
                         Fiche publique
                       &lt;/TabsTrigger&gt;
                     &lt;/TabsList&gt;
-                    &lt;TabsContent value=&quot;informations&quot; /&gt;
-                    &lt;TabsContent value=&quot;membres&quot; /&gt;
-                    &lt;TabsContent value=&quot;fiche-publique&quot; /&gt;
-                  &lt;/Tabs&gt;
-                }
-              /&gt;
-              &lt;PageContent&gt;
-                &lt;Card className=&quot;col-span-12 md:col-span-6&quot;&gt;
-                  &lt;CardHeader&gt;
-                    &lt;CardTitle className=&quot;text-lg&quot;&gt;Identité&lt;/CardTitle&gt;
-                  &lt;/CardHeader&gt;
-                  &lt;CardContent className=&quot;text-muted-foreground text-sm&quot;&gt;
-                    Raison sociale, SIRET, secteur d&#39;activité et coordonnées de
-                    l&#39;entreprise.
-                  &lt;/CardContent&gt;
-                &lt;/Card&gt;
-                &lt;Card className=&quot;col-span-12 md:col-span-6&quot;&gt;
-                  &lt;CardHeader&gt;
-                    &lt;CardTitle className=&quot;text-lg&quot;&gt;Référent·e&lt;/CardTitle&gt;
-                  &lt;/CardHeader&gt;
-                  &lt;CardContent className=&quot;text-muted-foreground text-sm&quot;&gt;
-                    Contact principal de l&#39;entreprise pour Les entreprises
-                    s&#39;engagent.
-                  &lt;/CardContent&gt;
-                &lt;/Card&gt;
-              &lt;/PageContent&gt;
+                  }
+                /&gt;
+                &lt;PageContent&gt;
+                  &lt;TabsContent value=&quot;informations&quot; className=&quot;contents&quot;&gt;
+                    &lt;Card className=&quot;col-span-12 md:col-span-6&quot;&gt;
+                      &lt;CardHeader&gt;
+                        &lt;CardTitle className=&quot;text-lg&quot;&gt;Identité&lt;/CardTitle&gt;
+                      &lt;/CardHeader&gt;
+                      &lt;CardContent className=&quot;text-muted-foreground text-sm&quot;&gt;
+                        Raison sociale, SIRET, secteur d&#39;activité et
+                        coordonnées de l&#39;entreprise.
+                      &lt;/CardContent&gt;
+                    &lt;/Card&gt;
+                    &lt;Card className=&quot;col-span-12 md:col-span-6&quot;&gt;
+                      &lt;CardHeader&gt;
+                        &lt;CardTitle className=&quot;text-lg&quot;&gt;Référent·e&lt;/CardTitle&gt;
+                      &lt;/CardHeader&gt;
+                      &lt;CardContent className=&quot;text-muted-foreground text-sm&quot;&gt;
+                        Contact principal de l&#39;entreprise pour Les entreprises
+                        s&#39;engagent.
+                      &lt;/CardContent&gt;
+                    &lt;/Card&gt;
+                  &lt;/TabsContent&gt;
+                  &lt;TabsContent value=&quot;membres&quot; className=&quot;col-span-full&quot;&gt;
+                    &lt;p className=&quot;text-muted-foreground text-sm&quot;&gt;
+                      Liste des membres rattachés à l&#39;entreprise.
+                    &lt;/p&gt;
+                  &lt;/TabsContent&gt;
+                  &lt;TabsContent
+                    value=&quot;fiche-publique&quot;
+                    className=&quot;col-span-full&quot;
+                  &gt;
+                    &lt;p className=&quot;text-muted-foreground text-sm&quot;&gt;
+                      Paramètres et aperçu de la fiche publique.
+                    &lt;/p&gt;
+                  &lt;/TabsContent&gt;
+                &lt;/PageContent&gt;
+              &lt;/Tabs&gt;
             &lt;/div&gt;
           &lt;/main&gt;
         &lt;/div&gt;
@@ -1791,14 +1802,14 @@ import { RiBuildingLine, RiEarthLine, RiGroupLine, RiPencilLine } from "react-ic
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> PageContent</h2>
       <div class="badges">
-        <label for="c-6-design-system-briques-espace-membre-pagecontent-props" class="badge ok as-toggle">2 prop types</label>
+        <label for="c-6-design-system-briques-webapp-pagecontent-props" class="badge ok as-toggle">2 prop types</label>
         
-        <label for="c-6-design-system-briques-espace-membre-pagecontent-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-6-design-system-briques-webapp-pagecontent-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
     </div>
-    <div class="meta" title="./stories/briques/webapp/PageContent.stories.tsx">design-system-briques-espace-membre-pagecontent · ./stories/briques/webapp/PageContent.stories.tsx</div>
+    <div class="meta" title="./stories/briques/webapp/PageContent.stories.tsx">design-system-briques-webapp-pagecontent · ./stories/briques/webapp/PageContent.stories.tsx</div>
     
     <div class="hint">Zone de contenu principale d&#39;une page. Padding `px-12 py-8` + grille 12 colonnes `gap-6` par défaut. Les enfants se positionnent avec `col-span-*`. Pour un contenu hors grille (ex: bloc plein largeur centré), passer `grid={false}`.</div>
     
@@ -1807,10 +1818,10 @@ import { RiBuildingLine, RiEarthLine, RiGroupLine, RiPencilLine } from "react-ic
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-6-design-system-briques-espace-membre-pagecontent-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-6-design-system-briques-webapp-pagecontent-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-6-design-system-briques-espace-membre-pagecontent-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-6-design-system-briques-webapp-pagecontent-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -1891,14 +1902,14 @@ grid?: boolean = true</code></pre>
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> PageHeader</h2>
       <div class="badges">
-        <label for="c-7-design-system-briques-espace-membre-pageheader-props" class="badge ok as-toggle">7 prop types</label>
+        <label for="c-7-design-system-briques-webapp-pageheader-props" class="badge ok as-toggle">7 prop types</label>
         
-        <label for="c-7-design-system-briques-espace-membre-pageheader-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-7-design-system-briques-webapp-pageheader-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
     </div>
-    <div class="meta" title="./stories/briques/webapp/PageHeader.stories.tsx">design-system-briques-espace-membre-pageheader · ./stories/briques/webapp/PageHeader.stories.tsx</div>
+    <div class="meta" title="./stories/briques/webapp/PageHeader.stories.tsx">design-system-briques-webapp-pageheader · ./stories/briques/webapp/PageHeader.stories.tsx</div>
     
     <div class="hint">En-tête contextuel sticky d&#39;une page.</div>
     
@@ -1907,10 +1918,10 @@ grid?: boolean = true</code></pre>
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-7-design-system-briques-espace-membre-pageheader-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-7-design-system-briques-webapp-pageheader-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-7-design-system-briques-espace-membre-pageheader-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-7-design-system-briques-webapp-pageheader-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -2056,14 +2067,14 @@ import {
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> SidebarBadge</h2>
       <div class="badges">
-        <label for="c-8-design-system-briques-espace-membre-sidebarbadge-props" class="badge ok as-toggle">1 prop type</label>
+        <label for="c-8-design-system-briques-webapp-sidebarbadge-props" class="badge ok as-toggle">1 prop type</label>
         
-        <label for="c-8-design-system-briques-espace-membre-sidebarbadge-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-8-design-system-briques-webapp-sidebarbadge-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
     </div>
-    <div class="meta" title="./stories/briques/webapp/SidebarBadge.stories.tsx">design-system-briques-espace-membre-sidebarbadge · ./stories/briques/webapp/SidebarBadge.stories.tsx</div>
+    <div class="meta" title="./stories/briques/webapp/SidebarBadge.stories.tsx">design-system-briques-webapp-sidebarbadge · ./stories/briques/webapp/SidebarBadge.stories.tsx</div>
     
     <div class="hint">Badge carré affiché à droite d&#39;un item de sidebar pour signaler son statut.</div>
     
@@ -2072,10 +2083,10 @@ import {
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-8-design-system-briques-espace-membre-sidebarbadge-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-8-design-system-briques-webapp-sidebarbadge-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-8-design-system-briques-espace-membre-sidebarbadge-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-8-design-system-briques-webapp-sidebarbadge-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -2417,14 +2428,14 @@ export const Onboarding: Story = {
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> TabsList</h2>
       <div class="badges">
-        <label for="c-10-design-system-briques-espace-membre-onglets-props" class="badge ok as-toggle">2 prop types</label>
+        <label for="c-10-design-system-briques-webapp-onglets-props" class="badge ok as-toggle">2 prop types</label>
         
-        <label for="c-10-design-system-briques-espace-membre-onglets-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-10-design-system-briques-webapp-onglets-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
     </div>
-    <div class="meta" title="./stories/briques/webapp/Onglets.stories.tsx">design-system-briques-espace-membre-onglets · ./stories/briques/webapp/Onglets.stories.tsx</div>
+    <div class="meta" title="./stories/briques/webapp/Onglets.stories.tsx">design-system-briques-webapp-onglets · ./stories/briques/webapp/Onglets.stories.tsx</div>
     
     <div class="hint">Onglets au style hérité du DSFR. Le `TabsList` de `shadcn/components/ui/tabs` expose deux variantes : - `default` : pilule arrondie (style shadcn d&#39;origine) ; - `line` : onglets DSFR (soulignement bleu france de l&#39;onglet actif), **la variante utilisée dans l&#39;espace membre v2**.</div>
     
@@ -2433,10 +2444,10 @@ export const Onboarding: Story = {
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-10-design-system-briques-espace-membre-onglets-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-10-design-system-briques-webapp-onglets-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-10-design-system-briques-espace-membre-onglets-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-10-design-system-briques-webapp-onglets-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -2931,13 +2942,13 @@ export const Defaut: Story = {
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;LayoutComplet&quot; component.
-  162 | }
-  163 |
-&gt; 164 | const meta: Meta&lt;typeof LayoutComplet&gt; = {
+  173 | }
+  174 |
+&gt; 175 | const meta: Meta&lt;typeof LayoutComplet&gt; = {
       | ^
-  165 |   title: &#39;Design system/Modèles de page/Webapp/Layout complet&#39;,
-  166 |   component: LayoutComplet,
-  167 |   tags: [&#39;autodocs&#39;],
+  176 |   title: &#39;Design system/Modèles de page/Webapp/Layout complet&#39;,
+  177 |   component: LayoutComplet,
+  178 |   tags: [&#39;autodocs&#39;],
 
 ./stories/modeles-pages/webapp/LayoutComplet.stories.tsx:
 import type { Meta, StoryObj } from &#39;@storybook/nextjs-vite&#39;;
@@ -3041,20 +3052,19 @@ function LayoutComplet() {
           /&gt;
           &lt;main
             className=&quot;@container/main min-h-0 flex-1 overflow-auto bg-dsfr-background-alt-grey&quot;
-            role=&quot;main&quot;
           &gt;
             &lt;div className=&quot;mx-auto flex w-full max-w-7xl flex-col items-start&quot;&gt;
-              &lt;PageHeader
-                icon={BuildingIcon}
-                title=&quot;Informations entreprise&quot;
-                actions={
-                  &lt;Button type=&quot;button&quot; size=&quot;sm&quot;&gt;
-                    &lt;RiPencilLine aria-hidden className=&quot;size-4&quot; /&gt;
-                    Modifier
-                  &lt;/Button&gt;
-                }
-                tabs={
-                  &lt;Tabs defaultValue=&quot;informations&quot;&gt;
+              &lt;Tabs defaultValue=&quot;informations&quot; className=&quot;contents&quot;&gt;
+                &lt;PageHeader
+                  icon={BuildingIcon}
+                  title=&quot;Informations entreprise&quot;
+                  actions={
+                    &lt;Button type=&quot;button&quot; size=&quot;sm&quot;&gt;
+                      &lt;RiPencilLine aria-hidden className=&quot;size-4&quot; /&gt;
+                      Modifier
+                    &lt;/Button&gt;
+                  }
+                  tabs={
                     &lt;TabsList variant=&quot;line&quot;&gt;
                       &lt;TabsTrigger value=&quot;informations&quot;&gt;
                         &lt;RiBuildingLine /&gt;
@@ -3069,32 +3079,44 @@ function LayoutComplet() {
                         Fiche publique
                       &lt;/TabsTrigger&gt;
                     &lt;/TabsList&gt;
-                    &lt;TabsContent value=&quot;informations&quot; /&gt;
-                    &lt;TabsContent value=&quot;membres&quot; /&gt;
-                    &lt;TabsContent value=&quot;fiche-publique&quot; /&gt;
-                  &lt;/Tabs&gt;
-                }
-              /&gt;
-              &lt;PageContent&gt;
-                &lt;Card className=&quot;col-span-12 md:col-span-6&quot;&gt;
-                  &lt;CardHeader&gt;
-                    &lt;CardTitle className=&quot;text-lg&quot;&gt;Identité&lt;/CardTitle&gt;
-                  &lt;/CardHeader&gt;
-                  &lt;CardContent className=&quot;text-muted-foreground text-sm&quot;&gt;
-                    Raison sociale, SIRET, secteur d&#39;activité et coordonnées de
-                    l&#39;entreprise.
-                  &lt;/CardContent&gt;
-                &lt;/Card&gt;
-                &lt;Card className=&quot;col-span-12 md:col-span-6&quot;&gt;
-                  &lt;CardHeader&gt;
-                    &lt;CardTitle className=&quot;text-lg&quot;&gt;Référent·e&lt;/CardTitle&gt;
-                  &lt;/CardHeader&gt;
-                  &lt;CardContent className=&quot;text-muted-foreground text-sm&quot;&gt;
-                    Contact principal de l&#39;entreprise pour Les entreprises
-                    s&#39;engagent.
-                  &lt;/CardContent&gt;
-                &lt;/Card&gt;
-              &lt;/PageContent&gt;
+                  }
+                /&gt;
+                &lt;PageContent&gt;
+                  &lt;TabsContent value=&quot;informations&quot; className=&quot;contents&quot;&gt;
+                    &lt;Card className=&quot;col-span-12 md:col-span-6&quot;&gt;
+                      &lt;CardHeader&gt;
+                        &lt;CardTitle className=&quot;text-lg&quot;&gt;Identité&lt;/CardTitle&gt;
+                      &lt;/CardHeader&gt;
+                      &lt;CardContent className=&quot;text-muted-foreground text-sm&quot;&gt;
+                        Raison sociale, SIRET, secteur d&#39;activité et
+                        coordonnées de l&#39;entreprise.
+                      &lt;/CardContent&gt;
+                    &lt;/Card&gt;
+                    &lt;Card className=&quot;col-span-12 md:col-span-6&quot;&gt;
+                      &lt;CardHeader&gt;
+                        &lt;CardTitle className=&quot;text-lg&quot;&gt;Référent·e&lt;/CardTitle&gt;
+                      &lt;/CardHeader&gt;
+                      &lt;CardContent className=&quot;text-muted-foreground text-sm&quot;&gt;
+                        Contact principal de l&#39;entreprise pour Les entreprises
+                        s&#39;engagent.
+                      &lt;/CardContent&gt;
+                    &lt;/Card&gt;
+                  &lt;/TabsContent&gt;
+                  &lt;TabsContent value=&quot;membres&quot; className=&quot;col-span-full&quot;&gt;
+                    &lt;p className=&quot;text-muted-foreground text-sm&quot;&gt;
+                      Liste des membres rattachés à l&#39;entreprise.
+                    &lt;/p&gt;
+                  &lt;/TabsContent&gt;
+                  &lt;TabsContent
+                    value=&quot;fiche-publique&quot;
+                    className=&quot;col-span-full&quot;
+                  &gt;
+                    &lt;p className=&quot;text-muted-foreground text-sm&quot;&gt;
+                      Paramètres et aperçu de la fiche publique.
+                    &lt;/p&gt;
+                  &lt;/TabsContent&gt;
+                &lt;/PageContent&gt;
+              &lt;/Tabs&gt;
             &lt;/div&gt;
           &lt;/main&gt;
         &lt;/div&gt;
@@ -3662,21 +3684,21 @@ Les frontières entre composant, composition et page sont implicites. Un même �
 | Fondations | Tokens, palettes, typographie, iconographie, thématiques | Palette vitrine, échelle d’espacement V2 |
 | Briques | Composants UI unitaires | `PageHeader`, `PageContent`, primitives `shadcn/components/ui/*` |
 | Compositions | Assemblages de briques | `EspaceMembrePageShell`, `AppSidebar`, sections vitrine canoniques |
-| Modèles de page | Pages complèteds, équivalents visuels d’une route | `Espace membre/Page événements (exemple)` |
+| Modèles de page | Pages complèteds, équivalents visuels d’une route | `Webapp/Page événements (exemple)` |
 
 Chaque couche est susceptible d&#39;être sous-divisées par **espace**, avec éventuellement des dossiers de composants partagés :
 
 ```
 Briques
-  ├─ Espace membre/
+  ├─ Webapp/
   └─ Vitrine/
 
 Compositions
-   ├─ Espace membre/
+   ├─ Webapp/
    └─ Vitrine/
 
 Modèles de page
-   ├─ Espace membre/
+   ├─ Webapp/
    └─ Vitrine/
 ```
 
@@ -3846,7 +3868,7 @@ La convention de nommage des calques Figma (consommée par le plugin custom) est
 
 Tout nouveau suffixe Figma (`@fill-100`, `@stroke-dashed`, etc.) doit avoir un équivalent CSS var documenté ici **avant** d&#39;être déployé dans le plugin.
 
-### 4. Wrapper canonique : `ThematiqueScope`
+### 3. Wrapper canonique : `ThematiqueScope`
 
 Le composant `ThematiqueScope` formalise le pattern : il prend une étiquette `{ color1, color2 }` et pose les CSS vars `--thematique-*` sur son enfant.
 Tout composant thématisable (`ThematiqueTag`, `ThematiqueCard`, `ThematiqueSidebarItem`, `ThematiqueCheckbox`) est consommé **à l&#39;intérieur** d&#39;un `ThematiqueScope`.</code></pre>
@@ -4585,7 +4607,7 @@ export const TypeRow = ({ label, cls, sample }) =&gt; (
 Deux échelles typographiques cohabitent pour l&#39;instant selon l&#39;espace :
 
 - **Vitrine** : DSFR (`fr-*`), police Marianne, tokens non modifiables
-- **Espace membre V2** : Tailwind + Marianne (`text-*`), scale calibrée sur le DSFR
+- **Webapp** : Tailwind + Marianne (`text-*`), scale calibrée sur le DSFR
 
 La police **Marianne** est chargée via `fonts-marianne.css` et est active dans les deux espaces.
 
