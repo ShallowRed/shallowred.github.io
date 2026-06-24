@@ -1,0 +1,1 @@
+import{i as e}from"./preload-helper-DaCzexP6.js";import{n as t,r as n}from"./preview-link-Bm-JOx7E.js";var r,i,a,o,s,c=e((()=>{t(),r=`vitrine-partir-envie-choix`,i=`vitrine-partir-envie-intention`,a=e=>n(`${e}--page`),o=a(r),s=a(i)}));export{s as n,c as r,o as t};

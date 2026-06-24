@@ -588,13 +588,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">3/12 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">3/12 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/38 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">10 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">3/14 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">4/14 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">4/56 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">15 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>4.6s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>4.3s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -736,7 +736,7 @@ nomUtilisateur: string</code></pre>
 
 size?: &quot;default&quot; | &quot;lg&quot; | &quot;sm&quot; | &quot;xs&quot; | &quot;icon-lg&quot; | &quot;icon&quot; | &quot;icon-sm&quot; | &quot;icon-xs&quot; | null = default
 
-variant?: &quot;link&quot; | &quot;default&quot; | &quot;outline&quot; | &quot;ghost&quot; | &quot;secondary&quot; | &quot;contrast&quot; | &quot;destructive&quot; | null = default</code></pre>
+variant?: &quot;default&quot; | &quot;outline&quot; | &quot;ghost&quot; | &quot;secondary&quot; | &quot;contrast&quot; | &quot;destructive&quot; | &quot;link&quot; | null = default</code></pre>
           </div>
         </div>
     
@@ -879,14 +879,14 @@ import { RiArrowRightLine, RiDownloadLine } from "react-icons/ri";</code></pre>
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> CarteContenu</h2>
       <div class="badges">
-        <label for="c-2-design-system-briques-partag-carte-de-contenu-props" class="badge ok as-toggle">16 prop types</label>
+        <label for="c-2-candidats-partag-briques-carte-de-contenu-props" class="badge ok as-toggle">24 prop types</label>
         
-        <label for="c-2-design-system-briques-partag-carte-de-contenu-stories" class="badge ok as-toggle">7 stories</label>
+        <label for="c-2-candidats-partag-briques-carte-de-contenu-stories" class="badge ok as-toggle">15 stories</label>
         
         
       </div>
     </div>
-    <div class="meta" title="./stories/briques/partage/CarteContenu.stories.tsx">design-system-briques-partagé-carte-de-contenu · ./stories/briques/partage/CarteContenu.stories.tsx</div>
+    <div class="meta" title="./stories/candidats/shared/briques/CarteContenu.stories.tsx">candidats-partagé-briques-carte-de-contenu · ./stories/candidats/shared/briques/CarteContenu.stories.tsx</div>
     
     <div class="hint">Brique **partagée** : carte de contenu versatile (vitrine ↔ espace membre). Transposition de la maquette Figma `content-card`. C&#39;est l&#39;instanciation (slots + libellés) qui définit l&#39;usage : événement, actualité, ressource…</div>
     
@@ -895,10 +895,10 @@ import { RiArrowRightLine, RiDownloadLine } from "react-icons/ri";</code></pre>
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-2-design-system-briques-partag-carte-de-contenu-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-2-candidats-partag-briques-carte-de-contenu-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-2-design-system-briques-partag-carte-de-contenu-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-2-candidats-partag-briques-carte-de-contenu-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -908,81 +908,93 @@ import { RiArrowRightLine, RiDownloadLine } from "react-icons/ri";</code></pre>
           <div class="note ok">
             <div class="row">
               <span class="ex-name">Prop types <small>(react-docgen-typescript)</small></span>
-              <span class="badge ok">16 prop types</span>
+              <span class="badge ok">24 prop types</span>
             </div>
-            <pre><code>Component: ../web/src/client/composants/shared/carte-contenu.tsx::CarteContenu</code></pre>
+            <pre><code>Component: stories/candidats/shared/briques/carte-contenu.tsx::CarteContenu</code></pre>
             <pre><code>Props:</code></pre>
             <pre><code>/**
- * Pastille colorée (ex : Rencontre, Guide, Actualité).
+ * Action de pied sur mesure (ex. un `&lt;Button&gt;`) en place du lien-flèche : carte
+ * « vedette ». Implique `lien=&quot;complet&quot;`.
  */
-badge?: ReactNode
+actionPied?: ReactNode
+
+/**
+ * `button` rend la carte actionnable sans navigation : fournir `onActiver`.
+ */
+as?: ElementCarte = a
+
+/**
+ * Catégorie éditoriale → une `Etiquette` (pill). Placée selon `emplacementMarqueurs`.
+ */
+categorie?: ReactNode
 
 className?: string
 
-/**
- * Paragraphe secondaire.
- */
 description?: ReactNode
 
+emplacementMarqueurs?: EmplacementMarqueurs = start
+
 /**
- * Destination du lien. Requis si `lien` ≠ `aucun`.
+ * État système → un `Badge` (carré). Placé selon `emplacementMarqueurs`.
+ */
+etat?: ReactNode
+
+/**
+ * Requis si `lien` ≠ `aucun`.
  */
 href?: string
 
-/**
- * Contenu de la zone visuelle (`next/image`, `&lt;img&gt;`…).
- */
 image?: ReactNode
 
-/**
- * Fraction occupée par l&#39;image (orientation horizontale). Défaut `tiers`.
- */
 largeurImage?: LargeurImage = tiers
 
-/**
- * Mode d&#39;affichage du lien. Défaut `complet`.
- */
 lien?: ModeLien = complet
 
 /**
- * Libellé du CTA en mode `complet` (par défaut « En savoir plus »).
+ * Libellé du CTA en mode `complet`.
  */
 lienLibelle?: ReactNode = En savoir plus
 
 /**
- * Ligne de métadonnées (icônes : lieu, durée, auteur…).
+ * Marqueur libre posé sur l&#39;image (distinct des slots typés `categorie`/`etat`).
+ */
+marqueurImage?: ReactNode
+
+/**
+ * Picto en tête de corps, pour les cartes sans image (registre « amorce »).
+ * Exclusif avec `image` en pratique.
+ */
+medaillon?: ReactNode
+
+/**
+ * Métadonnées neutres (lieu, durée, date) en gris, au-dessus du CTA. C&#39;est ICI
+ * que vont les dates, pas en eyebrow.
  */
 meta?: ReactNode
 
-/**
- * Niveau sémantique du titre (par défaut `h3`).
- */
 niveauTitre?: NiveauTitre = h3
+
+onActiver?: (() =&gt; void)
 
 orientation?: OrientationCarte = verticale
 
 /**
- * Ratio de la zone image (orientation verticale). Défaut `16/9`.
+ * Filet de séparation au-dessus du pied CTA (par défaut footer sans filet).
  */
+piedBordure?: boolean = false
+
 ratioImage?: RatioImage = 16/9
 
-/**
- * Surtitre : date ou catégorie, affiché au-dessus du titre.
- */
-surtitre?: ReactNode
+style?: CSSProperties
 
 taille?: TailleCarte = sm
 
 /**
- * Titre de la carte (obligatoire).
+ * `thematique` exige un `ThematiqueScope` parent (`--thematique-bg` / `--thematique-main`).
  */
-titre: ReactNode
+teinte?: TeinteCarte = neutre
 
-/**
- * Ton du surtitre. Défaut `accent` (bleu, cas ciblé : date/statut saillant).
- * `neutre` (gris) pour une étiquette de catégorie répétée sur la grille.
- */
-tonSurtitre?: TonSurtitre = accent</code></pre>
+titre: ReactNode</code></pre>
           </div>
         </div>
     
@@ -994,8 +1006,8 @@ tonSurtitre?: TonSurtitre = accent</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { CarteContenu } from "@lee/web";
-import { RiMapPin2Line, RiTimeLine } from "react-icons/ri";</code></pre>
+                <pre><code>import { Badge, CarteContenu, Etiquette, ThematiqueScope } from "@lee/storybook";
+import { RiCalendarLine, RiMapPin2Line, RiTimeLine } from "react-icons/ri";</code></pre>
               </div>
           
           
@@ -1010,7 +1022,7 @@ import { RiMapPin2Line, RiTimeLine } from "react-icons/ri";</code></pre>
     titre=&quot;Titre de la carte&quot;
     description=&quot;Description optionnelle de la carte.&quot;
     href=&quot;#&quot;
-    badge={&lt;Pastille&gt;Rencontre&lt;/Pastille&gt;}
+    categorie={&lt;CategorieExemple&gt;Rencontre&lt;/CategorieExemple&gt;}
     meta={&lt;MetaExemple /&gt;}
     image={&lt;ImageExemple /&gt;}
     orientation=&quot;verticale&quot;
@@ -1029,7 +1041,7 @@ import { RiMapPin2Line, RiTimeLine } from "react-icons/ri";</code></pre>
     titre=&quot;Titre de la carte&quot;
     description=&quot;Description optionnelle de la carte sur deux lignes environ.&quot;
     href=&quot;#&quot;
-    badge={&lt;Pastille&gt;Guide&lt;/Pastille&gt;}
+    categorie={&lt;CategorieExemple&gt;Guide&lt;/CategorieExemple&gt;}
     meta={&lt;MetaExemple /&gt;}
     image={&lt;ImageExemple /&gt;}
     orientation=&quot;verticale&quot;
@@ -1048,8 +1060,16 @@ import { RiMapPin2Line, RiTimeLine } from "react-icons/ri";</code></pre>
     titre=&quot;Titre de la carte&quot;
     description=&quot;Description optionnelle de la carte.&quot;
     href=&quot;#&quot;
-    surtitre=&quot;12 juin 2026&quot;
-    meta={&lt;MetaExemple /&gt;}
+    meta={(&lt;&gt;
+      &lt;span className=&quot;inline-flex items-center gap-1&quot;&gt;
+        &lt;RiCalendarLine className=&quot;size-3&quot; aria-hidden /&gt;
+        12 juin 2026
+      &lt;/span&gt;
+      &lt;span className=&quot;inline-flex items-center gap-1&quot;&gt;
+        &lt;RiMapPin2Line className=&quot;size-3&quot; aria-hidden /&gt;
+        Paris
+      &lt;/span&gt;
+    &lt;/&gt;)}
     image={&lt;ImageExemple /&gt;}
     orientation=&quot;horizontale&quot;
     taille=&quot;md&quot;
@@ -1068,7 +1088,7 @@ import { RiMapPin2Line, RiTimeLine } from "react-icons/ri";</code></pre>
     titre=&quot;Actualité sans pied CTA&quot;
     description=&quot;Toute la carte est cliquable, une flèche signale le lien.&quot;
     href=&quot;#&quot;
-    surtitre=&quot;Actualité&quot;
+    categorie={&lt;CategorieExemple&gt;Actualité&lt;/CategorieExemple&gt;}
     image={&lt;ImageExemple /&gt;}
     orientation=&quot;verticale&quot;
     taille=&quot;sm&quot;
@@ -1085,7 +1105,7 @@ import { RiMapPin2Line, RiTimeLine } from "react-icons/ri";</code></pre>
     titre=&quot;Ressource documentaire&quot;
     description=&quot;Une carte sans zone visuelle, utile pour des listes denses.&quot;
     href=&quot;#&quot;
-    badge={&lt;Pastille&gt;Guide&lt;/Pastille&gt;}
+    categorie={&lt;CategorieExemple&gt;Guide&lt;/CategorieExemple&gt;}
     meta={&lt;MetaExemple /&gt;}
     orientation=&quot;verticale&quot;
     taille=&quot;sm&quot;
@@ -1111,6 +1131,109 @@ import { RiMapPin2Line, RiTimeLine } from "react-icons/ri";</code></pre>
             </div>
             <div class="note ok">
               <div class="row">
+                <span class="ex-name">Échelle de taille (sm · md · lg)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const EchelleTaille = () =&gt; (
+  &lt;div className=&quot;flex flex-wrap items-start justify-center gap-6 bg-dsfr-background-default-grey p-8&quot;&gt;
+    {([&#39;sm&#39;, &#39;md&#39;, &#39;lg&#39;] as const).map((t) =&gt; (
+      &lt;div key={t} className=&quot;w-75&quot;&gt;
+        &lt;p className=&quot;mb-2 text-center text-xs font-bold uppercase text-(--color-dsfr-text-mention-grey)&quot;&gt;
+          {t}
+        &lt;/p&gt;
+        &lt;CarteContenu
+          titre=&quot;Titre de la carte&quot;
+          description=&quot;Description sur une à deux lignes pour juger la densité.&quot;
+          href=&quot;#&quot;
+          categorie={&lt;CategorieExemple&gt;Catégorie&lt;/CategorieExemple&gt;}
+          image={&lt;ImageExemple /&gt;}
+          taille={t}
+          lien=&quot;bloc&quot;
+          lienLibelle=&quot;En savoir plus&quot;
+        /&gt;
+      &lt;/div&gt;
+    ))}
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Lien bloc (carte cliquable + libellé)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const ModeBloc = () =&gt; &lt;CarteContenu
+    titre=&quot;Voir ce que veut dire s’engager&quot;
+    description=&quot;Le principe, les bénéfices, les étapes, de quoi situer la démarche avant de se lancer.&quot;
+    href=&quot;#&quot;
+    image={&lt;ImageExemple /&gt;}
+    orientation=&quot;horizontale&quot;
+    largeurImage=&quot;deuxCinquiemes&quot;
+    ratioImage=&quot;12/5&quot;
+    taille=&quot;lg&quot;
+    lien=&quot;bloc&quot;
+    lienLibelle=&quot;Découvrir la démarche&quot; /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Carte vedette (badge image + action bouton)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const CarteVedette = () =&gt; (
+  &lt;div className=&quot;flex h-115 justify-center bg-dsfr-background-default-grey p-8&quot;&gt;
+    &lt;div className=&quot;w-95&quot;&gt;
+      &lt;CarteContenu
+        titre=&quot;Trouver un club près de chez vous&quot;
+        description=&quot;Des entreprises engagées se réunissent partout en France.&quot;
+        taille=&quot;lg&quot;
+        lien=&quot;aucun&quot;
+        ratioImage=&quot;auto&quot;
+        image={&lt;ImageExemple /&gt;}
+        marqueurImage={
+          &lt;span className=&quot;inline-flex items-center gap-1.5 rounded-full bg-(--color-dsfr-background-default-grey)/95 px-3 py-1.5 text-xs font-semibold text-(--color-dsfr-text-title-grey) shadow-repos backdrop-blur&quot;&gt;
+            &lt;RiMapPin2Line className=&quot;size-3.5&quot; aria-hidden /&gt;
+            Partout en France
+          &lt;/span&gt;
+        }
+        actionPied={
+          &lt;button
+            type=&quot;button&quot;
+            className=&quot;inline-flex items-center gap-1.5 rounded bg-dsfr-blue-france-sun-113 px-4 py-2 text-sm font-medium text-white&quot;
+          &gt;
+            &lt;RiMapPin2Line className=&quot;size-4&quot; aria-hidden /&gt;
+            Trouver mon club
+          &lt;/button&gt;
+        }
+        className=&quot;h-full shadow-flottant&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Pied avec filet (piedBordure)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const PiedAvecFilet = () =&gt; &lt;CarteContenu
+    titre=&quot;Carte avec pied à filet&quot;
+    description=&quot;Le filet sépare le corps du pied CTA.&quot;
+    href=&quot;#&quot;
+    image={&lt;ImageExemple /&gt;}
+    taille=&quot;md&quot;
+    lien=&quot;complet&quot;
+    piedBordure
+    lienLibelle=&quot;En savoir plus&quot; /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
                 <span class="ex-name">Galerie (grille de 3)</span>
                 <span class="badge ok">story ok</span>
               </div>
@@ -1122,7 +1245,7 @@ import { RiMapPin2Line, RiTimeLine } from "react-icons/ri";</code></pre>
       titre=&quot;Premier contenu&quot;
       description=&quot;Description courte.&quot;
       href=&quot;#&quot;
-      badge={&lt;Pastille&gt;Guide&lt;/Pastille&gt;}
+      categorie={&lt;CategorieExemple&gt;Guide&lt;/CategorieExemple&gt;}
       image={&lt;ImageExemple /&gt;}
       lien=&quot;picto&quot;
     /&gt;
@@ -1130,7 +1253,7 @@ import { RiMapPin2Line, RiTimeLine } from "react-icons/ri";</code></pre>
       titre=&quot;Deuxième contenu&quot;
       description=&quot;Description courte.&quot;
       href=&quot;#&quot;
-      badge={&lt;Pastille&gt;Rencontre&lt;/Pastille&gt;}
+      categorie={&lt;CategorieExemple&gt;Rencontre&lt;/CategorieExemple&gt;}
       image={&lt;ImageExemple /&gt;}
       lien=&quot;picto&quot;
     /&gt;
@@ -1138,9 +1261,165 @@ import { RiMapPin2Line, RiTimeLine } from "react-icons/ri";</code></pre>
       titre=&quot;Troisième contenu&quot;
       description=&quot;Description courte.&quot;
       href=&quot;#&quot;
-      badge={&lt;Pastille&gt;Actualité&lt;/Pastille&gt;}
+      categorie={&lt;CategorieExemple&gt;Actualité&lt;/CategorieExemple&gt;}
       image={&lt;ImageExemple /&gt;}
       lien=&quot;picto&quot;
+    /&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Médaillon picto (carte « amorce »)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const AvecMedaillon = () =&gt; (
+  &lt;div className=&quot;flex justify-center bg-dsfr-background-default-grey p-8&quot;&gt;
+    &lt;div className=&quot;w-95&quot;&gt;
+      &lt;CarteContenu
+        medaillon={&lt;MedaillonExemple Icone={RiCompass3Line} /&gt;}
+        titre=&quot;Partez d’un sujet qui vous parle&quot;
+        description=&quot;Parcourez le référentiel et choisissez une thématique d’engagement.&quot;
+        href=&quot;#&quot;
+        taille=&quot;md&quot;
+        lien=&quot;bloc&quot;
+        lienLibelle=&quot;Voir le référentiel&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Teinte thématique (ThematiqueScope)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Teintee = () =&gt; (
+  &lt;div className=&quot;flex flex-wrap justify-center gap-6 bg-surface-greige p-8&quot;&gt;
+    &lt;ThematiqueScope
+      asChild
+      etiquette={{ color1: &#39;#1f7a5a&#39;, color2: &#39;#cdeadd&#39; }}
+    &gt;
+      &lt;div className=&quot;w-80&quot;&gt;
+        &lt;CarteContenu
+          teinte=&quot;thematique&quot;
+          medaillon={&lt;MedaillonExemple Icone={RiLeafLine} teinte /&gt;}
+          titre=&quot;Sobriété &amp; environnement&quot;
+          description=&quot;Réduire son empreinte, agir sur les ressources et le climat.&quot;
+          meta=&quot;12 engagements&quot;
+          href=&quot;#&quot;
+          taille=&quot;md&quot;
+          lien=&quot;bloc&quot;
+          lienLibelle=&quot;Explorer la thématique&quot;
+        /&gt;
+      &lt;/div&gt;
+    &lt;/ThematiqueScope&gt;
+    &lt;ThematiqueScope
+      asChild
+      etiquette={{ color1: &#39;#8a5a1f&#39;, color2: &#39;#f0e2cd&#39; }}
+    &gt;
+      &lt;div className=&quot;w-80&quot;&gt;
+        &lt;CarteContenu
+          teinte=&quot;thematique&quot;
+          medaillon={&lt;MedaillonExemple Icone={RiCompass3Line} teinte /&gt;}
+          titre=&quot;Jeunes &amp; insertion&quot;
+          description=&quot;Accompagner les parcours, ouvrir l’entreprise aux jeunes.&quot;
+          meta=&quot;8 engagements&quot;
+          href=&quot;#&quot;
+          taille=&quot;md&quot;
+          lien=&quot;bloc&quot;
+          lienLibelle=&quot;Explorer la thématique&quot;
+        /&gt;
+      &lt;/div&gt;
+    &lt;/ThematiqueScope&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Carte-bouton (as=&quot;button&quot;, ouvre un drawer)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const CarteBouton = () =&gt; (
+  &lt;div className=&quot;flex justify-center bg-surface-greige p-8&quot;&gt;
+    &lt;ThematiqueScope
+      asChild
+      etiquette={{ color1: &#39;#1f5a8a&#39;, color2: &#39;#cddef0&#39; }}
+    &gt;
+      &lt;div className=&quot;w-80&quot;&gt;
+        &lt;CarteContenu
+          teinte=&quot;thematique&quot;
+          as=&quot;button&quot;
+          onActiver={() =&gt; window.alert(&#39;Ouvre le drawer d’engagement&#39;)}
+          categorie={&lt;Etiquette size=&quot;sm&quot; scopeThematique&gt;#sobriete&lt;/Etiquette&gt;}
+          titre=&quot;Former ses équipes à la sobriété numérique&quot;
+          taille=&quot;md&quot;
+          lien=&quot;bloc&quot;
+          lienLibelle=&quot;Voir l’engagement&quot;
+        /&gt;
+      &lt;/div&gt;
+    &lt;/ThematiqueScope&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Grammaire : catégorie · état · meta · emplacements</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Grammaire = () =&gt; (
+  &lt;div className=&quot;grid grid-cols-1 gap-6 bg-dsfr-background-default-grey p-8 sm:grid-cols-2 lg:grid-cols-3&quot;&gt;
+    {/* 1 · catégorie + état au-dessus du titre (start) */}
+    &lt;CarteContenu
+      titre=&quot;Rencontre annuelle des clubs&quot;
+      description=&quot;Une catégorie (Etiquette) et un état (Badge) au-dessus du titre.&quot;
+      href=&quot;#&quot;
+      categorie={&lt;Etiquette size=&quot;sm&quot;&gt;Rencontre&lt;/Etiquette&gt;}
+      etat={&lt;Badge size=&quot;sm&quot; type=&quot;new&quot; label=&quot;Nouveau&quot; /&gt;}
+      meta={&lt;MetaExemple /&gt;}
+      taille=&quot;md&quot;
+      lien=&quot;complet&quot;
+      lienLibelle=&quot;S’inscrire&quot;
+    /&gt;
+
+    {/* 2 · catégorie + état POSÉS SUR L’IMAGE */}
+    &lt;CarteContenu
+      titre=&quot;Guide de l’engagement 2026&quot;
+      description=&quot;Mêmes marqueurs, mais posés par-dessus l’image.&quot;
+      href=&quot;#&quot;
+      image={&lt;ImageExemple /&gt;}
+      categorie={&lt;Etiquette size=&quot;sm&quot;&gt;Guide&lt;/Etiquette&gt;}
+      etat={&lt;Badge size=&quot;sm&quot; type=&quot;success&quot; label=&quot;Complet&quot; /&gt;}
+      emplacementMarqueurs=&quot;image&quot;
+      meta={&lt;MetaExemple /&gt;}
+      taille=&quot;md&quot;
+      lien=&quot;complet&quot;
+      lienLibelle=&quot;Télécharger&quot;
+    /&gt;
+
+    {/* 3 · catégorie seule + meta (cas éditorial courant) */}
+    &lt;CarteContenu
+      titre=&quot;Trois entreprises racontent leur démarche&quot;
+      description=&quot;Une catégorie éditoriale, une meta neutre — pas de bleu.&quot;
+      href=&quot;#&quot;
+      categorie={&lt;Etiquette size=&quot;sm&quot;&gt;Actualité&lt;/Etiquette&gt;}
+      meta={
+        &lt;span className=&quot;inline-flex items-center gap-1&quot;&gt;
+          &lt;RiTimeLine className=&quot;size-3&quot; aria-hidden /&gt;
+          12 juin 2026
+        &lt;/span&gt;
+      }
+      taille=&quot;md&quot;
+      lien=&quot;complet&quot;
+      lienLibelle=&quot;Lire l’article&quot;
     /&gt;
   &lt;/div&gt;
 );</code></pre>
@@ -1162,23 +1441,23 @@ import { RiMapPin2Line, RiTimeLine } from "react-icons/ri";</code></pre>
     <div class="title">
       <h2><span class="status-dot dot-err"></span> CatalogueThematiques</h2>
       <div class="badges">
-        <label for="c-3-design-system-fondations-th-matiques-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-3-design-system-fondations-th-matiques-info" class="badge info as-toggle">1 info</label>
-        <label for="c-3-design-system-fondations-th-matiques-stories" class="badge err as-toggle">1/1 story errors</label>
+        <label for="c-3-candidats-partag-fondations-th-matiques-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-3-candidats-partag-fondations-th-matiques-info" class="badge info as-toggle">1 info</label>
+        <label for="c-3-candidats-partag-fondations-th-matiques-stories" class="badge err as-toggle">1/1 story errors</label>
         
         
       </div>
     </div>
-    <div class="meta" title="./stories/fondations/Thematiques.stories.tsx">design-system-fondations-thématiques · ./stories/fondations/Thematiques.stories.tsx</div>
+    <div class="meta" title="./stories/candidats/shared/fondations/Thematiques.stories.tsx">candidats-partagé-fondations-thématiques · ./stories/candidats/shared/fondations/Thematiques.stories.tsx</div>
     
     
     
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-3-design-system-fondations-th-matiques-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-3-design-system-fondations-th-matiques-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-3-design-system-fondations-th-matiques-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-3-candidats-partag-fondations-th-matiques-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-3-candidats-partag-fondations-th-matiques-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-3-candidats-partag-fondations-th-matiques-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -1190,35 +1469,24 @@ import { RiMapPin2Line, RiTimeLine } from "react-icons/ri";</code></pre>
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;CatalogueThematiques&quot; component.
-  101 | }
-  102 |
-&gt; 103 | const meta: Meta&lt;typeof CatalogueThematiques&gt; = {
-      | ^
-  104 |   title: &#39;Design system/Fondations/Thématiques&#39;,
-  105 |   component: CatalogueThematiques,
-  106 |   tags: [&#39;autodocs&#39;],
+  90 | }
+  91 |
+&gt; 92 | const meta: Meta&lt;typeof CatalogueThematiques&gt; = {
+     | ^
+  93 |   title: &#39;Candidats/Partagé/Fondations/Thématiques&#39;,
+  94 |   component: CatalogueThematiques,
+  95 |   tags: [&#39;autodocs&#39;],
 
-./stories/fondations/Thematiques.stories.tsx:
+./stories/candidats/shared/fondations/Thematiques.stories.tsx:
 import type { Meta, StoryObj } from &#39;@storybook/nextjs-vite&#39;;
 
 import { ThematiqueScope } from &#39;@client/composants/shared/thematique-scope&#39;;
 
-import { iconesThematiques } from &#39;../_data/icones-thematiques&#39;;
+import { iconesThematiques } from &#39;../../../_data/icones-thematiques&#39;;
 import {
   type ThematiqueReferentiel,
   thematiquesEngagement,
-} from &#39;../_data/referentiel-engagement&#39;;
-
-/**
- * Catalogue des **thématiques d&#39;engagement**
- *
- * Source de vérité : le référentiel Hygraph (champ `etiquette` de chaque
- * `actionsCategory` de type « Entreprise »). Chaque thématique porte un picto
- * (Magicoon, DDR-003) et deux couleurs (DDR-004) :
- *
- * - `couleurAccent` (color1) : teinte foncée — texte, picto, bordure ;
- * - `couleurPastel` (color2) : teinte claire — fond de section thématique.
- */
+} from &#39;../../../_data/referentiel-engagement&#39;;
 
 function PastilleHex({ hex, label }: { hex: string; label: string }) {
   return (
@@ -1302,7 +1570,7 @@ function CatalogueThematiques() {
 }
 
 const meta: Meta&lt;typeof CatalogueThematiques&gt; = {
-  title: &#39;Design system/Fondations/Thématiques&#39;,
+  title: &#39;Candidats/Partagé/Fondations/Thématiques&#39;,
   component: CatalogueThematiques,
   tags: [&#39;autodocs&#39;],
   parameters: {
@@ -1312,14 +1580,11 @@ const meta: Meta&lt;typeof CatalogueThematiques&gt; = {
       description: {
         component: [
           &#39;Catalogue des thématiques réelles du référentiel d’engagement&#39;,
-          &#39;(Hygraph, type « Entreprise »). Pour chaque thématique : picto&#39;,
-          &#39;Magicoon (DDR-003), couleur d’accent (color1) et couleur pastel&#39;,
-          &#39;(color2, DDR-004), et nombre d’engagements rattachés.&#39;,
+          &#39;(type « Entreprise ») : picto Magicoon, couleur d’accent (color1),&#39;,
+          &#39;couleur pastel (color2), nombre d’engagements rattachés.&#39;,
           &#39;&#39;,
-          &#39;Les couleurs sont diffusées via `ThematiqueScope` (DDR-004) :&#39;,
-          &#39;rôles `--thematique-main` / `--thematique-bg`, jamais de hex en dur.&#39;,
-          &#39;Données partagées avec les modèles de page du scénario 1 via&#39;,
-          &#39;`apps/storybook/stories/_data/referentiel-engagement.ts`.&#39;,
+          &#39;Les couleurs sont diffusées via `ThematiqueScope`&#39;,
+          &#39;(`--thematique-main` / `--thematique-bg`), jamais de hex en dur.&#39;,
         ].join(&#39;\n&#39;),
       },
     },
@@ -1380,14 +1645,223 @@ export const Defaut: Story = {
   no-story-error
   no-doc-error"
   role="listitem"
+  aria-label="DsfrIcon">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> DsfrIcon</h2>
+      <div class="badges">
+        <label for="c-4-design-system-briques-partag-dsfricon-props" class="badge ok as-toggle">7 prop types</label>
+        
+        <label for="c-4-design-system-briques-partag-dsfricon-stories" class="badge ok as-toggle">5 stories</label>
+        
+        
+      </div>
+    </div>
+    <div class="meta" title="./stories/briques/partage/DsfrIcon.stories.tsx">design-system-briques-partagé-dsfricon · ./stories/briques/partage/DsfrIcon.stories.tsx</div>
+    
+    <div class="hint">Pont transitoire : reproduit le rendu pixel-perfect des icônes DSFR built-in (`fr-icon-*`) en consommant un import Remix Icon (`react-icons/ri`). Utilisé pour migrer LES-262 sans big-bang.</div>
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  
+  <input id="c-4-design-system-briques-partag-dsfricon-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  
+  <input id="c-4-design-system-briques-partag-dsfricon-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen-typescript)</small></span>
+              <span class="badge ok">7 prop types</span>
+            </div>
+            <pre><code>Component: ../web/src/client/composants/design-system/DsfrIcon/DsfrIcon.tsx::DsfrIcon</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>aria-hidden?: boolean | &quot;true&quot; | &quot;false&quot; = true
+
+aria-label?: string
+
+className?: string
+
+icon: IconType
+
+size?: string = 1.5rem
+
+style?: CSSProperties
+
+title?: string</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { DsfrIcon } from "@lee/web";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Defaut</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Defaut = () =&gt; &lt;DsfrIcon icon={RiArrowRightLine} /&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Dans Un Texte</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DansUnTexte = () =&gt; &lt;p style={{ fontSize: &#39;1rem&#39;, margin: 0 }}&gt;Un lien avec &lt;DsfrIcon icon={RiArrowRightLine} /&gt;une icône inline pour vérifier le
+          vertical-align par rapport à la baseline du texte.
+        &lt;/p&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Tailles</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Tailles = () =&gt; (
+  &lt;div
+    style={{
+      display: &#39;flex&#39;,
+      gap: &#39;2rem&#39;,
+      alignItems: &#39;baseline&#39;,
+      fontSize: &#39;1rem&#39;,
+    }}
+  &gt;
+    &lt;span&gt;
+      défaut &lt;DsfrIcon icon={RiArrowRightLine} /&gt;
+    &lt;/span&gt;
+    &lt;span&gt;
+      1.25rem &lt;DsfrIcon icon={RiArrowRightLine} size=&quot;1.25rem&quot; /&gt;
+    &lt;/span&gt;
+    &lt;span&gt;
+      2rem &lt;DsfrIcon icon={RiArrowRightLine} size=&quot;2rem&quot; /&gt;
+    &lt;/span&gt;
+    &lt;span&gt;
+      5rem &lt;DsfrIcon icon={RiArrowRightLine} size=&quot;5rem&quot; /&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Couleur</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Couleur = () =&gt; (
+  &lt;div style={{ display: &#39;flex&#39;, gap: &#39;1.5rem&#39;, alignItems: &#39;baseline&#39; }}&gt;
+    &lt;span style={{ color: &#39;var(--blue-france-sun-113, #000091)&#39; }}&gt;
+      Bleu France &lt;DsfrIcon icon={RiArrowRightLine} /&gt;
+    &lt;/span&gt;
+    &lt;span style={{ color: &#39;var(--red-marianne-main-472, #e1000f)&#39; }}&gt;
+      Rouge Marianne &lt;DsfrIcon icon={RiArrowRightLine} /&gt;
+    &lt;/span&gt;
+    &lt;span style={{ color: &#39;var(--green-emeraude-main-632, #00a95f)&#39; }}&gt;
+      Vert Émeraude &lt;DsfrIcon icon={RiCheckboxCircleFill} /&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Mapping</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">Mapping `fr-icon-*` → composant Remix Icon utilisé pour la migration.</div>
+              <pre><code>const Mapping = () =&gt; {
+  const ICONS = [
+    { className: &#39;fr-icon-account-fill&#39;, Icon: RiAccountCircleFill },
+    { className: &#39;fr-icon-arrow-down-line&#39;, Icon: RiArrowDownLine },
+    { className: &#39;fr-icon-arrow-left-line&#39;, Icon: RiArrowLeftLine },
+    { className: &#39;fr-icon-arrow-right-line&#39;, Icon: RiArrowRightLine },
+    {
+      className: &#39;fr-icon-arrow-right-s-last-line&#39;,
+      Icon: RiSkipRightLine,
+    },
+    { className: &#39;fr-icon-checkbox-circle-fill&#39;, Icon: RiCheckboxCircleFill },
+  ] as const;
+
+  return (
+    &lt;table
+      style={{
+        borderCollapse: &#39;collapse&#39;,
+        fontFamily: &#39;system-ui, sans-serif&#39;,
+      }}
+    &gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th style={cellStyle}&gt;Original DSFR&lt;/th&gt;
+          &lt;th style={cellStyle}&gt;Iso-pixel&lt;/th&gt;
+          &lt;th style={cellStyle}&gt;Classe DSFR&lt;/th&gt;
+          &lt;th style={cellStyle}&gt;Composant Remix&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        {ICONS.map(({ className, Icon }) =&gt; (
+          &lt;tr key={className}&gt;
+            &lt;td style={cellStyle}&gt;
+              &lt;i className={className} aria-hidden=&quot;true&quot; /&gt;
+            &lt;/td&gt;
+            &lt;td style={cellStyle}&gt;
+              &lt;DsfrIcon icon={Icon} /&gt;
+            &lt;/td&gt;
+            &lt;td style={{ ...cellStyle, fontFamily: &#39;monospace&#39; }}&gt;
+              {className}
+            &lt;/td&gt;
+            &lt;td style={{ ...cellStyle, fontFamily: &#39;monospace&#39; }}&gt;
+              {DSFR_ICON_MAPPING[className]
+                ? Icon.name || &#39;Ri…&#39;
+                : &#39;—&#39;}
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        ))}
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  );
+};</code></pre>
+            </div>
+        </div>
+    
+    
+  </div>
+</article>
+<article
+  class="card 
+  no-error 
+  no-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
   aria-label="EspaceMembreHeaderView">
   <div class="head">
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> EspaceMembreHeaderView</h2>
       <div class="badges">
-        <label for="c-4-design-system-compositions-webapp-header-props" class="badge ok as-toggle">3 prop types</label>
+        <label for="c-5-design-system-compositions-webapp-header-props" class="badge ok as-toggle">3 prop types</label>
         
-        <label for="c-4-design-system-compositions-webapp-header-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-5-design-system-compositions-webapp-header-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -1401,10 +1875,10 @@ export const Defaut: Story = {
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-4-design-system-compositions-webapp-header-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-5-design-system-compositions-webapp-header-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-4-design-system-compositions-webapp-header-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-5-design-system-compositions-webapp-header-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -1477,6 +1951,270 @@ nomUtilisateur: string</code></pre>
 </article>
 <article
   class="card 
+  no-error 
+  has-info 
+  no-story-error
+  no-doc-error"
+  role="listitem"
+  aria-label="ImageDebordante">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> ImageDebordante</h2>
+      <div class="badges">
+        <label for="c-6-explorations-site-vitrine-t3-2026-image-d-bordante-props" class="badge ok as-toggle">4 prop types</label>
+        <label for="c-6-explorations-site-vitrine-t3-2026-image-d-bordante-info" class="badge info as-toggle">1 info</label>
+        <label for="c-6-explorations-site-vitrine-t3-2026-image-d-bordante-stories" class="badge ok as-toggle">5 stories</label>
+        
+        
+      </div>
+    </div>
+    <div class="meta" title="./stories/explorations/vitrine-T3-2026/kit-explo/ImageDebordante.stories.tsx">explorations-site-vitrine-t3-2026-image-débordante · ./stories/explorations/vitrine-T3-2026/kit-explo/ImageDebordante.stories.tsx</div>
+    
+    
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="c-6-explorations-site-vitrine-t3-2026-image-d-bordante-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-6-explorations-site-vitrine-t3-2026-image-d-bordante-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  
+  <input id="c-6-explorations-site-vitrine-t3-2026-image-d-bordante-props" class="tg tg-props" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-info">
+          
+    <div class="note info">
+      <div class="note-title">Info</div>
+      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
+    </div>
+        </div>
+    
+        <div class="panel panel-props">
+          <div class="note ok">
+            <div class="row">
+              <span class="ex-name">Prop types <small>(react-docgen-typescript)</small></span>
+              <span class="badge ok">4 prop types</span>
+            </div>
+            <pre><code>Component: stories/explorations/vitrine-T3-2026/kit-explo/image-debordante.tsx::ImageDebordante</code></pre>
+            <pre><code>Props:</code></pre>
+            <pre><code>/**
+ * Classes additionnelles sur le visuel (ratio, largeur, ombre, bordure…).
+ */
+className?: string
+
+/**
+ * Mécanique de débordement vertical. Par défaut : `fort` (maquette Figma).
+ */
+debordement?: DebordementVertical = fort
+
+/**
+ * Débordement `bas` uniquement : classes du conteneur d&#39;empreinte (la place
+ * réservée dans la grille). Pilote la hauteur de rangée avant débordement.
+ * Par défaut `md:min-h-72` (≈ valeur du hero `/s-engager`).
+ */
+empreinteClassName?: string = md:min-h-72
+
+wrapperRef?: undefined</code></pre>
+          </div>
+        </div>
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { EyebrowHeading, ImageDebordante, SectionVitrine } from "@lee/storybook";</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Isolée (preview)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Isolee = () =&gt; &lt;SectionVitrine fond=&quot;white&quot;&gt;
+    &lt;div className=&quot;max-w-md&quot;&gt;
+        &lt;ImageDebordante
+            src={SAMPLE_IMG}
+            alt=&quot;Atelier collaboratif, en démonstration.&quot;
+            debordement=&quot;aucun&quot; /&gt;
+    &lt;/div&gt;
+&lt;/SectionVitrine&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Comparaison des débordements symétriques</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Variantes = () =&gt; (
+  &lt;SectionVitrine fond=&quot;white&quot;&gt;
+    &lt;div className=&quot;grid grid-cols-1 gap-12 md:grid-cols-3&quot;&gt;
+      {([&#39;aucun&#39;, &#39;leger&#39;, &#39;fort&#39;] as const).map((d) =&gt; (
+        &lt;div key={d} className=&quot;flex flex-col items-center gap-4&quot;&gt;
+          &lt;div className=&quot;w-full border-y border-dashed border-(--color-dsfr-border-default-grey) py-6&quot;&gt;
+            &lt;ImageDebordante
+              src={SAMPLE_IMG}
+              alt=&quot;&quot;
+              debordement={d}
+              className=&quot;aspect-3/2&quot;
+            /&gt;
+          &lt;/div&gt;
+          &lt;code className=&quot;text-sm text-(--color-dsfr-text-mention-grey)&quot;&gt;
+            debordement=&amp;quot;{d}&amp;quot;
+          &lt;/code&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  &lt;/SectionVitrine&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Hero éditorial thématique (débordement symétrique)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const HeroThematique = () =&gt; (
+  &lt;SectionVitrine fond=&quot;thematique&quot; accent=&quot;#fef4f2&quot;&gt;
+    &lt;div className=&quot;grid grid-cols-1 items-center gap-8 md:grid-cols-12&quot;&gt;
+      &lt;div className=&quot;md:col-span-8&quot;&gt;
+        &lt;EyebrowHeading
+          eyebrow=&quot;Jeunes&quot;
+          niveau=&quot;h2&quot;
+          className=&quot;[&amp;_p]:text-[#ce614a]&quot;
+        &gt;
+          Proposez des actions de découverte des métiers aux collégiens
+        &lt;/EyebrowHeading&gt;
+        &lt;p className=&quot;mt-4 max-w-2xl&quot;&gt;
+          Faites découvrir vos métiers aux collégiens en proposant des actions
+          au sein de votre entreprise (visites, stages…) ou au sein du collège
+          (interventions de vos collaborateurs en classe, participation à des
+          forums des métiers, des salons…).
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;md:col-span-4&quot;&gt;
+        &lt;ImageDebordante
+          src={SAMPLE_IMG}
+          alt=&quot;Deux collégiens découvrent un métier en atelier.&quot;
+          debordement=&quot;fort&quot;
+          className=&quot;aspect-square&quot;
+        /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/SectionVitrine&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Hero débordant vers le bas (fond bleu → fond clair)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DebordementBas = () =&gt; (
+  &lt;&gt;
+    &lt;SectionVitrine fond=&quot;blue&quot; taille=&quot;large&quot; className=&quot;overflow-visible&quot;&gt;
+      &lt;div className=&quot;grid grid-cols-1 items-start gap-8 md:grid-cols-12&quot;&gt;
+        &lt;div className=&quot;md:col-span-7&quot;&gt;
+          &lt;h1 className=&quot;text-4xl leading-tight font-bold md:text-5xl&quot;&gt;
+            Un visuel qui plonge dans la section suivante
+          &lt;/h1&gt;
+          &lt;p className=&quot;mt-6 max-w-xl text-xl leading-8 text-(--color-dsfr-text-inverted-blue-france)&quot;&gt;
+            Le débordement &lt;code&gt;bas&lt;/code&gt; donne du volume au hero sans
+            gonfler le bloc bleu : seule la partie haute de l&#39;image vit dans
+            la section, le reste empiète sur le fond clair.
+          &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div className=&quot;relative z-10 md:col-span-5&quot;&gt;
+          &lt;ImageDebordante
+            src={SAMPLE_IMG_2}
+            alt=&quot;Réunion d&#39;une équipe en entreprise.&quot;
+            debordement=&quot;bas&quot;
+            style={{ objectPosition: &#39;center 30%&#39; }}
+            className=&quot;border border-white/10 shadow-[0_0_48px_rgba(0,0,18,0.3)]&quot;
+          /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/SectionVitrine&gt;
+    &lt;SectionVitrine fond=&quot;greige&quot; taille=&quot;defaut&quot;&gt;
+      &lt;p className=&quot;max-w-2xl text-(--color-dsfr-text-mention-grey)&quot;&gt;
+        Section suivante (fond &lt;code&gt;greige&lt;/code&gt;) : le bas de l&#39;image du
+        hero déborde par-dessus ce fond, ce qui crée le volume caractéristique
+        des maquettes.
+      &lt;/p&gt;
+    &lt;/SectionVitrine&gt;
+  &lt;/&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Duo éditorial (débordement léger en alternance)</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DuoEditorial = () =&gt; (
+  &lt;SectionVitrine fond=&quot;white&quot;&gt;
+    &lt;div className=&quot;flex flex-col gap-16&quot;&gt;
+      &lt;div className=&quot;grid grid-cols-1 items-center gap-8 md:grid-cols-2&quot;&gt;
+        &lt;ImageDebordante
+          src={SAMPLE_IMG}
+          alt=&quot;Atelier collaboratif en entreprise.&quot;
+          debordement=&quot;leger&quot;
+          className=&quot;aspect-3/2&quot;
+        /&gt;
+        &lt;div&gt;
+          &lt;EyebrowHeading eyebrow=&quot;Étape 1&quot; niveau=&quot;h3&quot;&gt;
+            Choisissez vos thématiques
+          &lt;/EyebrowHeading&gt;
+          &lt;p className=&quot;mt-3 text-(--color-dsfr-text-mention-grey)&quot;&gt;
+            Sélectionnez les axes qui font sens pour votre activité. Le
+            référentiel s&#39;adapte à votre maturité, pas l&#39;inverse.
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;grid grid-cols-1 items-center gap-8 md:grid-cols-2&quot;&gt;
+        &lt;div className=&quot;md:order-2&quot;&gt;
+          &lt;ImageDebordante
+            src={SAMPLE_IMG_2}
+            alt=&quot;Échanges entre dirigeants d&#39;entreprise.&quot;
+            debordement=&quot;leger&quot;
+            className=&quot;aspect-3/2&quot;
+          /&gt;
+        &lt;/div&gt;
+        &lt;div className=&quot;md:order-1&quot;&gt;
+          &lt;EyebrowHeading eyebrow=&quot;Étape 2&quot; niveau=&quot;h3&quot;&gt;
+            Passez à l&#39;action avec vos pairs
+          &lt;/EyebrowHeading&gt;
+          &lt;p className=&quot;mt-3 text-(--color-dsfr-text-mention-grey)&quot;&gt;
+            Déclarez vos initiatives, suivez leur progression et inspirez
+            d&#39;autres entreprises de votre territoire.
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/SectionVitrine&gt;
+);</code></pre>
+            </div>
+        </div>
+    
+    
+  </div>
+</article>
+<article
+  class="card 
   has-error 
   has-info 
   has-story-error
@@ -1487,9 +2225,9 @@ nomUtilisateur: string</code></pre>
     <div class="title">
       <h2><span class="status-dot dot-err"></span> LayoutComplet</h2>
       <div class="badges">
-        <label for="c-5-design-system-mod-les-de-page-webapp-layout-complet-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-5-design-system-mod-les-de-page-webapp-layout-complet-info" class="badge info as-toggle">1 info</label>
-        <label for="c-5-design-system-mod-les-de-page-webapp-layout-complet-stories" class="badge err as-toggle">1/1 story errors</label>
+        <label for="c-7-design-system-mod-les-de-page-webapp-layout-complet-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-7-design-system-mod-les-de-page-webapp-layout-complet-info" class="badge info as-toggle">1 info</label>
+        <label for="c-7-design-system-mod-les-de-page-webapp-layout-complet-stories" class="badge err as-toggle">1/1 story errors</label>
         
         
       </div>
@@ -1501,9 +2239,9 @@ nomUtilisateur: string</code></pre>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-5-design-system-mod-les-de-page-webapp-layout-complet-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-5-design-system-mod-les-de-page-webapp-layout-complet-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-5-design-system-mod-les-de-page-webapp-layout-complet-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-7-design-system-mod-les-de-page-webapp-layout-complet-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-7-design-system-mod-les-de-page-webapp-layout-complet-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-7-design-system-mod-les-de-page-webapp-layout-complet-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -1802,9 +2540,9 @@ import { RiBuildingLine, RiEarthLine, RiGroupLine, RiPencilLine } from "react-ic
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> PageContent</h2>
       <div class="badges">
-        <label for="c-6-design-system-briques-webapp-pagecontent-props" class="badge ok as-toggle">2 prop types</label>
+        <label for="c-8-design-system-briques-webapp-pagecontent-props" class="badge ok as-toggle">2 prop types</label>
         
-        <label for="c-6-design-system-briques-webapp-pagecontent-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-8-design-system-briques-webapp-pagecontent-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -1818,10 +2556,10 @@ import { RiBuildingLine, RiEarthLine, RiGroupLine, RiPencilLine } from "react-ic
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-6-design-system-briques-webapp-pagecontent-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-8-design-system-briques-webapp-pagecontent-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-6-design-system-briques-webapp-pagecontent-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-8-design-system-briques-webapp-pagecontent-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -1902,9 +2640,9 @@ grid?: boolean = true</code></pre>
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> PageHeader</h2>
       <div class="badges">
-        <label for="c-7-design-system-briques-webapp-pageheader-props" class="badge ok as-toggle">7 prop types</label>
+        <label for="c-9-design-system-briques-webapp-pageheader-props" class="badge ok as-toggle">7 prop types</label>
         
-        <label for="c-7-design-system-briques-webapp-pageheader-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-9-design-system-briques-webapp-pageheader-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -1918,10 +2656,10 @@ grid?: boolean = true</code></pre>
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-7-design-system-briques-webapp-pageheader-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-9-design-system-briques-webapp-pageheader-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-7-design-system-briques-webapp-pageheader-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-9-design-system-briques-webapp-pageheader-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -2067,9 +2805,9 @@ import {
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> SidebarBadge</h2>
       <div class="badges">
-        <label for="c-8-design-system-briques-webapp-sidebarbadge-props" class="badge ok as-toggle">1 prop type</label>
+        <label for="c-10-design-system-briques-webapp-sidebarbadge-props" class="badge ok as-toggle">1 prop type</label>
         
-        <label for="c-8-design-system-briques-webapp-sidebarbadge-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-10-design-system-briques-webapp-sidebarbadge-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -2083,10 +2821,10 @@ import {
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-8-design-system-briques-webapp-sidebarbadge-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-10-design-system-briques-webapp-sidebarbadge-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-8-design-system-briques-webapp-sidebarbadge-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-10-design-system-briques-webapp-sidebarbadge-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -2197,9 +2935,9 @@ import {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> SidebarPreview</h2>
       <div class="badges">
-        <label for="c-9-design-system-compositions-webapp-sidebar-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-9-design-system-compositions-webapp-sidebar-info" class="badge info as-toggle">1 info</label>
-        <label for="c-9-design-system-compositions-webapp-sidebar-stories" class="badge err as-toggle">2/3 story errors</label>
+        <label for="c-11-design-system-compositions-webapp-sidebar-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-11-design-system-compositions-webapp-sidebar-info" class="badge info as-toggle">1 info</label>
+        <label for="c-11-design-system-compositions-webapp-sidebar-stories" class="badge err as-toggle">2/3 story errors</label>
         
         
       </div>
@@ -2211,9 +2949,9 @@ import {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-9-design-system-compositions-webapp-sidebar-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-9-design-system-compositions-webapp-sidebar-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-9-design-system-compositions-webapp-sidebar-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-11-design-system-compositions-webapp-sidebar-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-11-design-system-compositions-webapp-sidebar-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-11-design-system-compositions-webapp-sidebar-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -2428,9 +3166,9 @@ export const Onboarding: Story = {
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> TabsList</h2>
       <div class="badges">
-        <label for="c-10-design-system-briques-webapp-onglets-props" class="badge ok as-toggle">2 prop types</label>
+        <label for="c-12-design-system-briques-webapp-onglets-props" class="badge ok as-toggle">2 prop types</label>
         
-        <label for="c-10-design-system-briques-webapp-onglets-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-12-design-system-briques-webapp-onglets-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -2444,10 +3182,10 @@ export const Onboarding: Story = {
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-10-design-system-briques-webapp-onglets-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-12-design-system-briques-webapp-onglets-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-10-design-system-briques-webapp-onglets-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-12-design-system-briques-webapp-onglets-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -2558,9 +3296,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@lee/web";</code></pre
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> UrlTabs</h2>
       <div class="badges">
-        <label for="c-11-design-system-compositions-webapp-urltabs-props" class="badge ok as-toggle">3 prop types</label>
+        <label for="c-13-design-system-compositions-webapp-urltabs-props" class="badge ok as-toggle">3 prop types</label>
         
-        <label for="c-11-design-system-compositions-webapp-urltabs-stories" class="badge ok as-toggle">1 story</label>
+        <label for="c-13-design-system-compositions-webapp-urltabs-stories" class="badge ok as-toggle">1 story</label>
         
         
       </div>
@@ -2574,10 +3312,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@lee/web";</code></pre
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
   
-  <input id="c-11-design-system-compositions-webapp-urltabs-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-13-design-system-compositions-webapp-urltabs-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
-  <input id="c-11-design-system-compositions-webapp-urltabs-props" class="tg tg-props" type="checkbox" hidden />
+  <input id="c-13-design-system-compositions-webapp-urltabs-props" class="tg tg-props" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -2691,23 +3429,23 @@ import { RiCalendarCheckLine, RiCalendarLine, RiDraftLine } from "react-icons/ri
     <div class="title">
       <h2><span class="status-dot dot-err"></span> CatalogueThematiques</h2>
       <div class="badges">
-        <label for="c-error-0-design-system-fondations-th-matiques-err" class="badge err as-toggle">prop type error</label>
-        <label for="c-error-0-design-system-fondations-th-matiques-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-0-design-system-fondations-th-matiques-stories" class="badge err as-toggle">1/1 story errors</label>
+        <label for="c-error-0-candidats-partag-fondations-th-matiques-err" class="badge err as-toggle">prop type error</label>
+        <label for="c-error-0-candidats-partag-fondations-th-matiques-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-0-candidats-partag-fondations-th-matiques-stories" class="badge err as-toggle">1/1 story errors</label>
         
         
       </div>
     </div>
-    <div class="meta" title="./stories/fondations/Thematiques.stories.tsx">design-system-fondations-thématiques · ./stories/fondations/Thematiques.stories.tsx</div>
+    <div class="meta" title="./stories/candidats/shared/fondations/Thematiques.stories.tsx">candidats-partagé-fondations-thématiques · ./stories/candidats/shared/fondations/Thematiques.stories.tsx</div>
     
     
     
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-0-design-system-fondations-th-matiques-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-0-design-system-fondations-th-matiques-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-0-design-system-fondations-th-matiques-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-0-candidats-partag-fondations-th-matiques-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-0-candidats-partag-fondations-th-matiques-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-0-candidats-partag-fondations-th-matiques-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -2719,35 +3457,24 @@ import { RiCalendarCheckLine, RiCalendarLine, RiDraftLine } from "react-icons/ri
     <div class="note err">
       <div class="note-title">Prop type error</div>
       <div class="note-body"><pre><code>No component file found for the &quot;CatalogueThematiques&quot; component.
-  101 | }
-  102 |
-&gt; 103 | const meta: Meta&lt;typeof CatalogueThematiques&gt; = {
-      | ^
-  104 |   title: &#39;Design system/Fondations/Thématiques&#39;,
-  105 |   component: CatalogueThematiques,
-  106 |   tags: [&#39;autodocs&#39;],
+  90 | }
+  91 |
+&gt; 92 | const meta: Meta&lt;typeof CatalogueThematiques&gt; = {
+     | ^
+  93 |   title: &#39;Candidats/Partagé/Fondations/Thématiques&#39;,
+  94 |   component: CatalogueThematiques,
+  95 |   tags: [&#39;autodocs&#39;],
 
-./stories/fondations/Thematiques.stories.tsx:
+./stories/candidats/shared/fondations/Thematiques.stories.tsx:
 import type { Meta, StoryObj } from &#39;@storybook/nextjs-vite&#39;;
 
 import { ThematiqueScope } from &#39;@client/composants/shared/thematique-scope&#39;;
 
-import { iconesThematiques } from &#39;../_data/icones-thematiques&#39;;
+import { iconesThematiques } from &#39;../../../_data/icones-thematiques&#39;;
 import {
   type ThematiqueReferentiel,
   thematiquesEngagement,
-} from &#39;../_data/referentiel-engagement&#39;;
-
-/**
- * Catalogue des **thématiques d&#39;engagement**
- *
- * Source de vérité : le référentiel Hygraph (champ `etiquette` de chaque
- * `actionsCategory` de type « Entreprise »). Chaque thématique porte un picto
- * (Magicoon, DDR-003) et deux couleurs (DDR-004) :
- *
- * - `couleurAccent` (color1) : teinte foncée — texte, picto, bordure ;
- * - `couleurPastel` (color2) : teinte claire — fond de section thématique.
- */
+} from &#39;../../../_data/referentiel-engagement&#39;;
 
 function PastilleHex({ hex, label }: { hex: string; label: string }) {
   return (
@@ -2831,7 +3558,7 @@ function CatalogueThematiques() {
 }
 
 const meta: Meta&lt;typeof CatalogueThematiques&gt; = {
-  title: &#39;Design system/Fondations/Thématiques&#39;,
+  title: &#39;Candidats/Partagé/Fondations/Thématiques&#39;,
   component: CatalogueThematiques,
   tags: [&#39;autodocs&#39;],
   parameters: {
@@ -2841,14 +3568,11 @@ const meta: Meta&lt;typeof CatalogueThematiques&gt; = {
       description: {
         component: [
           &#39;Catalogue des thématiques réelles du référentiel d’engagement&#39;,
-          &#39;(Hygraph, type « Entreprise »). Pour chaque thématique : picto&#39;,
-          &#39;Magicoon (DDR-003), couleur d’accent (color1) et couleur pastel&#39;,
-          &#39;(color2, DDR-004), et nombre d’engagements rattachés.&#39;,
+          &#39;(type « Entreprise ») : picto Magicoon, couleur d’accent (color1),&#39;,
+          &#39;couleur pastel (color2), nombre d’engagements rattachés.&#39;,
           &#39;&#39;,
-          &#39;Les couleurs sont diffusées via `ThematiqueScope` (DDR-004) :&#39;,
-          &#39;rôles `--thematique-main` / `--thematique-bg`, jamais de hex en dur.&#39;,
-          &#39;Données partagées avec les modèles de page du scénario 1 via&#39;,
-          &#39;`apps/storybook/stories/_data/referentiel-engagement.ts`.&#39;,
+          &#39;Les couleurs sont diffusées via `ThematiqueScope`&#39;,
+          &#39;(`--thematique-main` / `--thematique-bg`), jamais de hex en dur.&#39;,
         ].join(&#39;\n&#39;),
       },
     },
@@ -3624,7 +4348,11 @@ Beaucoup de couches de design implicites se sont empilées au fil de l&#39;eau, 
 Le storybook du projet est organisé en 2 zones principales :
 
 1. `Design system` recense les composants et pratiques de design validées et stabilisées
-2. `Explorations` abrite des **prototypes prospectifs** : maquettes haute-fidélité d&#39;un parcours futur, ateliers, pistes encore en discussion : Ce qui s&#39;y trouve peut être abandonné, remanié ou promu.</code></pre>
+2. `Explorations` abrite des **prototypes prospectifs** : maquettes haute-fidélité d&#39;un parcours futur, ateliers, pistes encore en discussion : Ce qui s&#39;y trouve peut être abandonné, remanié ou promu.
+
+&gt; **Mise à jour ([DDR-011])** : un troisième palier `Candidats` s&#39;intercale entre
+&gt; `Explorations` et `Design system` pour les sujets sortis d&#39;exploration, validés
+&gt; dans le principe, en voie de raffinage ou de promotion. Voir DDR-011.</code></pre>
           </div>
         </div>
   </div>
@@ -3882,10 +4610,1369 @@ Tout composant thématisable (`ThematiqueTag`, `ThematiqueCard`, `ThematiqueSide
   aria-label="Docs">
   <div class="head">
     <div class="title">
+      <h2><span class="status-dot dot-ok"></span> DDR/DDR-011 : Zone « Candidats » (sas entre Explorations et Design system)</h2>
+      <div class="badges">
+        
+        <label for="doc-6-ddr-ddr-011-zone-candidats-sas-entre-explorations-et-design-system-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./stories/ddr/DDR-011.mdx">ddr-ddr-011-zone-«-candidats-»-sas-entre-explorations-et-design-system--docs · ./stories/ddr/DDR-011.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-6-ddr-ddr-011-zone-candidats-sas-entre-explorations-et-design-system-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+&lt;Meta
+  title=&#39;DDR/DDR-011 : Zone « Candidats » (sas entre Explorations et Design system)&#39;
+  created=&#39;2026-06-19&#39;
+  status=&#39;accepté&#39;
+/&gt;
+
+# DDR-011 : Zone « Candidats »
+
+## Contexte
+
+[DDR-001] organise le book en **deux** zones : `Design system` (stabilisé) et
+`Explorations` (prospectif). À l&#39;usage, un troisième état de maturité est apparu,
+sans endroit où vivre : des sujets **sortis d&#39;exploration**, validés dans leur
+principe, mais **pas encore stabilisés** — leur décision de design est en voie
+d&#39;acceptation et/ou leur brique en voie de promotion.
+
+Aujourd&#39;hui ces sujets restent coincés sous `Explorations/` (ex. l&#39;exploration
+`Page shell &amp; surfaces` empile six DDR candidats et leurs planches de spec), ce
+qui brouille deux signaux opposés : « prototype jetable » et « en voie
+d&#39;intégration ». Un lecteur ne sait plus ce qui est encore une hypothèse de ce
+qui est quasi-acquis et à raffiner.
+
+## Décision
+
+Le book comporte **trois** zones, du plus prospectif au plus stabilisé :
+
+| Zone | Statut | Rôle |
+|---|---|---|
+| `Explorations` | Prospectif | Prototypes jetables, hypothèses confrontables (cf. [DDR-001]). |
+| `Candidats` | En voie d&#39;intégration | Sujets sortis d&#39;exploration, validés dans le principe, à raffiner et/ou promouvoir. |
+| `Design system` | Stabilisé | Doctrine et composants opposables (cf. [DDR-002]). |
+
+La zone `Candidats` est un **sas** : tout ce qui s&#39;y trouve a vocation à en
+sortir, soit vers `Design system` (promotion), soit, en cas d&#39;abandon, vers
+`Explorations` ou la suppression.
+
+### Convention de titre Storybook
+
+Les entrées sont préfixées `Candidats/&lt;sujet&gt;/…`, par symétrie avec
+`Design system/&lt;couche&gt;/…` et `Explorations/&lt;sujet&gt;/…`. La zone se range entre
+`Design system` et `Explorations` dans le tri de la sidebar.
+
+### Modèle de maturation (étages A / B / C)
+
+Un sujet candidat se découpe en trois étages, repris de la roadmap de passation
+de `Page shell &amp; surfaces` :
+
+| Étage | Nom | Livrable | Touche le code app ? |
+|---|---|---|---|
+| **A** | Arbitrage | `DDR candidat` → `DDR` `accepté` dans `stories/ddr/` | Non |
+| **B** | Promotion | primitives sorties vers `Design system` (couche [DDR-002]), `!manifest` retiré | Non (DS) |
+| **C** | Adoption | remplacement du legacy dans `src` | Oui |
+
+### Critères d&#39;entrée dans `Candidats`
+
+- Le principe du sujet est **validé** (il ne s&#39;agit plus de savoir *si*, mais
+  *comment* l&#39;intégrer).
+- Un **DDR candidat** existe (ou est en cours), recensant les décisions ouvertes
+  restantes.
+- Le périmètre est **isolé** : un sujet = un sous-dossier `Candidats/&lt;sujet&gt;/`,
+  pas un fourre-tout multi-scopes.
+
+### Critères de sortie
+
+- **Vers `Design system`** : DDR accepté (étage A fait) **et** brique stabilisée
+  (étage B fait — style 100 % tokens, classée selon [DDR-002], `!manifest`
+  retiré). L&#39;adoption produit (étage C) peut suivre indépendamment.
+- **Vers `Explorations` / suppression** : le sujet est abandonné ou rétrogradé au
+  rang d&#39;hypothèse.
+
+## Conséquences
+
+- `Explorations` redevient lisible comme couche **purement** prospective.
+- Un sujet candidat ne re-décide rien dans une PR de code : un arbitrage qui
+  rouvre repasse par un étage A (DDR), jamais dans l&#39;adoption (cf. [DDR-000]).
+- Un agent IA peut situer un sujet sur l&#39;axe Explorations → Candidats → Design
+  system et proposer l&#39;étage de maturation manquant.
+- [DDR-001] est **étendu** par le présent DDR (2 → 3 zones) ; il reste la base de
+  l&#39;organisation du book.
+
+## Alternatives écartées
+
+### Garder deux zones et un simple tag de maturité
+
+Un tag (`!manifest`, `wip`…) sur des entrées restées sous `Explorations` ne sépare
+pas visuellement les deux signaux (prototype jetable vs en voie d&#39;intégration) et
+laisse le fourre-tout multi-scopes perdurer. Une zone dédiée force l&#39;isolement par
+sujet et rend l&#39;état de maturité lisible dans la navigation.
+
+### Promouvoir directement vers `Design system`
+
+Promouvoir sans sas obligerait à figer en une fois la décision (A), la brique (B)
+et l&#39;adoption (C). Le sas permet de **séquencer** ces étages à coûts et publics de
+relecture distincts.
+
+### Références
+
+- [DDR-000] — Qu&#39;est-ce qu&#39;un DDR · `stories/ddr/DDR-000.mdx`
+- [DDR-001] — Organisation du book · `stories/ddr/DDR-001.mdx`
+- [DDR-002] — Couches de composition · `stories/ddr/DDR-002.mdx`
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> DDR/DDR-016 : Archivage et ménage du book (zone Archives)</h2>
+      <div class="badges">
+        
+        <label for="doc-7-ddr-ddr-016-archivage-et-m-nage-du-book-zone-archives-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./stories/ddr/DDR-016.mdx">ddr-ddr-016-archivage-et-ménage-du-book-zone-archives--docs · ./stories/ddr/DDR-016.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-7-ddr-ddr-016-archivage-et-m-nage-du-book-zone-archives-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+&lt;Meta
+  title=&#39;DDR/DDR-016 : Archivage et ménage du book (zone Archives)&#39;
+  created=&#39;2026-06-22&#39;
+  status=&#39;proposé&#39;
+/&gt;
+
+# DDR-016 : Archivage et ménage du book
+
+&gt; **Statut `proposé`.** Ce DDR fixe une **convention de ménage** (zone d&#39;archives,
+&gt; critères d&#39;archivage, repli des galeries d&#39;options) et un **plan de tri par
+&gt; lots**. Il devient opposable au passage en `accepté`. Il ne décide rien sur le
+&gt; *contenu* des sujets candidats — chaque arbitrage de design reste porté par son
+&gt; DDR (005→015).
+
+## Contexte
+
+La promotion des écrans vitrine vers `Candidats` (juin 2026, [DDR-012]→[DDR-015])
+a été faite **sans replier la matière d&#39;exploration source**. C&#39;était assumé
+(`Apercu.mdx` : « leur ménage se fera plus tard, séparément » ; [DDR-012] : les
+galeries `Options · …` « restent la matière… à replier une fois la direction
+confirmée »). Ce ménage différé arrive aujourd&#39;hui à échéance : le book empile du
+contenu redondant entre `Explorations` et `Candidats`, et un lecteur ne sait plus
+ce qui est encore une hypothèse de ce qui est dépassé.
+
+Trois natures de désordre, à ne pas confondre :
+
+1. **Redondance** — une exploration dont un candidat plus abouti reprend la
+   matière (la décision a été extraite, l&#39;écran source ne sert plus de référence).
+2. **Convergence en attente** — une galerie d&#39;options candidate dont la décision
+   n&#39;est *pas encore tranchée* : ce n&#39;est pas du déchet, c&#39;est de la promotion en
+   attente. On ne replie qu&#39;**après** l&#39;arbitrage.
+3. **Dette technique** — un même composant dupliqué entre `kit-explo` et
+   `socle-vitrine`, avec des imports encore branchés sur l&#39;ancienne copie.
+
+## Décision
+
+### 1. Zone `Explorations/_archives/`
+
+Le ménage **ne supprime pas** : il déplace. On introduit une branche
+`Explorations/_archives/` (tag `!manifest`, hors navigation active) qui accueille
+les explorations **supersédées** — celles dont un candidat reprend et dépasse la
+matière. Le code reste lisible et réversible ; git conserve l&#39;historique mais
+n&#39;est pas le seul filet.
+
+Une exploration n&#39;entre en archives que si **les trois** conditions tiennent :
+
+- un **candidat (ou DDR)** reprend explicitement sa matière ;
+- elle ne sert **plus de référence** d&#39;écran (le candidat est plus abouti) ;
+- **aucun import vivant** ne la tire (vérification graphe obligatoire — voir §4).
+
+Les `.mdx` de **synthèse décisionnelle** (`Apercu`, `PartiRetenu`, `Analyse*`,
+`Decisions*`, `Modele*`) ne sont **pas** archivés : leur valeur est documentaire,
+pas exécutable. Ils restent comme trace du raisonnement.
+
+### 2. Repli des galeries d&#39;options (≠ archivage)
+
+Une galerie `Options · …` candidate se replie **au moment où sa décision ouverte
+est tranchée**, pas avant : on garde le parti retenu (câblé), on retire les
+variantes confrontées. Tant que l&#39;arbitrage est ouvert, la galerie **reste** —
+c&#39;est la matière de décision, sa présence est légitime.
+
+### 3. Convention de statut
+
+- **Fuite manifeste** : une story candidate qui n&#39;a pas `!manifest` apparaît au
+  manifeste comme stabilisée. Toute story sous `Candidats/` porte `!manifest`
+  jusqu&#39;à promotion explicite vers `Design system` (cf. [DDR-011], étage B).
+- **Avancement de l&#39;étage A** : un DDR candidat dont les décisions ouvertes sont
+  mûres est passé en `accepté` dans `stories/ddr/` (numéro conservé), et non
+  laissé indéfiniment en `candidat`.
+
+## Plan de tri par lots
+
+&gt; Ordre = risque croissant. Chaque lot est livrable indépendamment.
+&gt;
+&gt; **Avancement (2026-06-22).** Lot 1 ✅ et Lot 4 ✅ exécutés (zone
+&gt; `explorations/_archives/` créée, 19 stories supersédées déplacées, fuites
+&gt; `!manifest` du socle corrigées, build vérifié : 0 fuite `_archives`, zones
+&gt; intactes, bundle gelé `pistes-vitrine-t3` toujours autoportant). **Matière
+&gt; récupérée avant archivage** : l&#39;anatomie pédagogique de `composition-vivante`
+&gt; (catalogue de gestes) est promue en story `Candidats/Socle vitrine/Gestes de
+&gt; composition` — le socle avait les gestes câblés mais aucune doc qui les montre.
+&gt; Le geste « Mouvement tenu » (micro-animations a11y-safe) reste en `_archives`,
+&gt; non promu (récupérable). **Lot 3 ✅** : shim `bloc-pedagogique` supprimé +
+&gt; 18 écrans orphelins (résidu Lot 4) balayés en `_archives`. **Lot 5 ✅** :
+&gt; exploration réduite à l&#39;essentiel (13 stories + 8 docs → 10 stories + 0 doc) ;
+&gt; matière sauvée rapatriée au candidat (spec du modèle de données du drawer,
+&gt; depuis fusionnée dans la note « Modèle de contenu » ; `SectionsCanoniques`
+&gt; enrichie). **Lot 2** : revu le 22/06, **délibérément laissé
+&gt; ouvert** (aucun arbitrage de galerie tranché ; promotion des DDR reportée). Le
+&gt; ménage est traité jusqu&#39;à sa limite actionnable — la suite dépend d&#39;arbitrages
+&gt; produit, pas de dette technique.
+
+### Lot 1 — Quick wins (sans risque)
+
+| Action | Cible | Justification |
+| --- | --- | --- |
+| Archiver le doublon strict | `explorations/.../parti-retenu/OptionsCommencer.stories.tsx` | Prédécesseur exact de `candidats/home-vitrine/OptionsParOuCommencer` (version câblée, parti C). |
+| Corriger la fuite manifeste | `candidats/socle-vitrine/briques/{Section,Eyebrow,Grille,PanneauCTA}.stories.tsx` | Ajouter `!manifest` : le socle reste candidat tant que la tokenisation DSFR n&#39;est pas faite ([DDR-012] étage B). |
+
+### Lot 2 — Convergence des candidats (promotion, pas archivage)
+
+&gt; **Revue 2026-06-22 — délibérément laissé OUVERT.** Les 6 galeries d&#39;options ont
+&gt; été passées en revue avec Lucas ; décision : **rien replier pour l&#39;instant**.
+&gt; Aucune décision n&#39;est assez tranchée (O3 et thématique/hero ont un parti câblé
+&gt; « par défaut » mais l&#39;arbitrage final n&#39;est pas posé ; O1/O2/référentiel restent
+&gt; en confrontation active). Conforme au principe : une galerie est de la matière
+&gt; de décision tant que l&#39;arbitrage est ouvert — sa présence est légitime. La
+&gt; promotion des DDR candidats (005/006/015 → `accepté`) est **reportée** de même.
+&gt; Ce lot n&#39;est donc pas « fait » : il est en attente d&#39;arbitrages produit.
+
+| Action | Cible | Statut de la décision |
+| --- | --- | --- |
+| Passer en `accepté` | DDR-005 (surfaces), DDR-006 (états), DDR-015 (en savoir plus) | Principes « stabilisés » / parti « tranché » selon leurs propres docs. **Reporté** (22/06). |
+| Replier la galerie d&#39;options après arbitrage | `home-vitrine/Options*` (O1/O2/O3), `referentiel-vitrine/Options*` (A vs C), `thematique-vitrine/Options*` (voile uni vs fondu) | **Ouvertes** — revues le 22/06, maintenues ouvertes par Lucas. |
+
+### Lot 3 — Résorber la dette `kit-explo` ↔ `socle-vitrine` ✅ (2026-06-22)
+
+À l&#39;inspection, le « doublon » `kit-explo/bloc-pedagogique.tsx` n&#39;était déjà plus
+qu&#39;un **ré-export** vers `@candidats/vitrine/socle-vitrine/briques/bloc-pedagogique`
+(factorisation déjà faite). Le Lot 3 s&#39;est donc résumé à un nettoyage de shim :
+
+1. ✅ Migré tous les importeurs `@vitrine/kit-explo/bloc-pedagogique` → source socle
+   (5 écrans vivants + les stories kit-explo + 1 écran legacy-t2 orphelin).
+2. ✅ Supprimé le shim `kit-explo/bloc-pedagogique.tsx`.
+3. **Balayage adjacent** : l&#39;audit du graphe a révélé **18 modules `ecrans/`
+   orphelins** (résidu du Lot 4 : stories archivées, modules `ecrans/` restés).
+   Tous des feuilles (aucun n&#39;importe un autre écran) → déplacés en
+   `_archives/.../ecrans/`, imports des stories archivées réparés en relatif
+   (`../ecrans/`) pour que `_archives` reste une île rebuildable. 9 écrans vivants
+   conservés (scenarios 1/4/5/6 + catalogue). Story `BlocPedagogique.stories.tsx`
+   (redondante, doc non critique) archivée. Build vérifié : 0 fuite, 0 import cassé.
+
+Le reste de `kit-explo` (`bandeau-chiffres`, `image-debordante`, `palette-vitrine`)
+**reste vivant** — hors périmètre de cette dette précise.
+
+### Lot 5 — Réduire l&#39;exploration à l&#39;essentiel ✅ (2026-06-22)
+
+Objectif (Lucas) : ne garder dans `explorations/vitrine-T3-2026/` que ce qui
+mérite vraiment d&#39;être une exploration vivante — **peu de stories et de docs**,
+quitte à modifier l&#39;arborescence. Tri par nature :
+
+- **Rapatrié (matière à sauver)** : la spec du modèle de données du drawer →
+  `candidats/vitrine/` (complète [DDR-014]) ; depuis fusionnée avec le modèle de
+  contenu de base dans la note unique « Modèle de contenu ». Le
+  catalogue `SectionsCanoniques` → **promu ET enrichi** en
+  `candidats/socle-vitrine/Sections canoniques` (photos réelles, geste
+  `BandeauPreuve`, section Chiffres-preuve ajoutée, story « Rythme de page »
+  DDR-005, **zéro dépendance au kit d&#39;explo** — Hero via `TuilePhoto` socle, pas
+  `ImageDebordante`).
+- **Archivé (a fait son temps)** : les 5 autres docs `parti-retenu/` (Parti
+  retenu, Décisions activables, Analyse nous-rejoindre, PAR-OU-COMMENCER,
+  PASSATION — la décision vit dans les candidats/DDR), l&#39;`Apercu.mdx` (périmé :
+  décrivait une structure 00→05 désormais archivée), `PistesCatalogue` (pistes T2
+  idiome legacy), les stories `BandeauChiffres` (design retenu déjà au socle via
+  `BandeauPreuve`) et `SectionsCanoniques` (remplacée par la version candidate).
+- **Gardé (explo vivante)** : les scénarios de parcours catalogue +
+  `ImageDebordante` (souhait Lucas).
+
+**Résultat (1ʳᵉ passe) : 13 stories + 8 docs → 10 stories + 0 doc.** Build vérifié,
+Hero candidat validé au navigateur. Dossiers vides supprimés.
+
+**2ᵉ passe — refonte de l&#39;arborescence (2026-06-22).** Le scénario « Rangé par
+grands thèmes » (scenario-1) jugé sans intérêt → archivé, avec ses 3 modules
+`ecrans/` orphelins. L&#39;archivage en cascade a rendu **tout `legacy-t2`** (12
+modules), `05-pistes-anterieures` et `bandeau-chiffres` orphelins (plus aucune
+story vivante ne les tirait) → tout archivé. L&#39;arbo Storybook, qui gardait un
+préfixe mort `02 · Le catalogue/` et un `Briques &amp; sections (explo)/` à un seul
+élément, est **mise à plat** : 4 entrées de 1er niveau — `Composer son programme`,
+`Partir d&#39;une envie`, `Partir de son entreprise` (chaque parcours regroupe ses 2
+étapes par un `title` commun, l&#39;étape passe en `name`), et `Image débordante`.
+Dossiers physiques renommés en conséquence (`scenario-N-*` → nom du parcours).
+Imports des modules déplacés réparés en relatif dans `_archives` (sauf
+`image-debordante`, resté vivant → gardé en alias `@vitrine`). **Final : 7 stories,
+0 doc** ; build 234 entrées, 0 fuite.
+
+### Lot 4 — Archivage des explorations supersédées (par sujet, après vérif imports)
+
+| Exploration | Reprise par | Archive |
+| --- | --- | --- |
+| `01-accueil/*` (5 postures) | Home arbitrée → `candidats/home-vitrine` ([DDR-012]) | Oui |
+| `02-catalogue/scenario-2-a-plat` | `candidats/referentiel-vitrine` ([DDR-013]) | Oui |
+| `02-catalogue/scenario-3-activables` | `candidats/thematique-vitrine` ([DDR-014]) | Oui |
+| `03-style/{registre-accueil,style-vivant,cran-1,referentiel-vivant}` | DA arbitrée ([DDR-012] : greige + Bleu France) | Oui |
+| `03-style/composition-vivante` (catalogue de gestes) | Gestes câblés dans `candidats/socle-vitrine/gestes-vitrine.tsx` ; **anatomie pédagogique promue** en `Candidats/Socle vitrine/Gestes de composition` (story-catalogue) | Oui |
+| `parti-retenu/` (stories d&#39;écran) | `*Retenue` candidats | Oui (garder les `.mdx` de synthèse) |
+
+&gt; **Garde-fou.** `explorations/vitrine-T3-2026/` est un **graphe câblé** (dossier
+&gt; `ecrans/` partagé, navigation inter-stories, `legacy-t2` qui importe à la fois
+&gt; `kit-explo` ET `@candidats/socle-vitrine`). L&#39;archivage se fait **par sujet, en
+&gt; réparant les imports**, jamais en bloc.
+
+&gt; **Présentations.** Certaines explorations sont embarquées par iframe dans des
+&gt; présentations `nuxt-slides` (couplage par id de story). Avant de déplacer une
+&gt; telle exploration en `_archives` ou de la supprimer, **geler les decks qui la
+&gt; citent** en bundle autoportant — voir [DDR-017]. Pour notre cas vitrine, c&#39;est le
+&gt; gel du deck `pistes-vitrine-t3` (qui embarque 01-accueil / 02-catalogue / 03-style)
+&gt; qui débloque le Lot 4 ; il a été gelé le 2026-06-22, Lot 4 exécuté dans la foulée.
+&gt; Le deck `vitrine-t3-candidat-retenu`, lui, ne cite que des écrans **candidats**
+&gt; (`parti-retenu-*` → `candidats/*-vitrine`), hors périmètre d&#39;archivage : pas à geler.
+
+### Hors-périmètre de ce ménage (à instruire séparément)
+
+- `explorations/atelier-mecenes/` — sujet distinct, non supersédé, pas concerné.
+- `02-catalogue/scenario-{4,5,6}` (panier / intention / siret) — **aucun candidat
+  ne les reprend** : ce sont des hypothèses de parcours encore vivantes, pas de la
+  redondance. À garder en l&#39;état.
+
+## Références
+
+- [DDR-000] — Qu&#39;est-ce qu&#39;un DDR · `stories/ddr/DDR-000.mdx`
+- [DDR-001] — Organisation du book · `stories/ddr/DDR-001.mdx`
+- [DDR-011] — Zone « Candidats » · `stories/ddr/DDR-011.mdx`
+- [DDR-012]→[DDR-015] — sujets vitrine candidats · `stories/candidats/*-vitrine/`
+- [DDR-017] — Cycle de vie des présentations (gel &amp; bundle) · `stories/ddr/DDR-017.mdx`
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> DDR/DDR-017 : Cycle de vie des présentations (gel &amp; bundle autoportant)</h2>
+      <div class="badges">
+        
+        <label for="doc-8-ddr-ddr-017-cycle-de-vie-des-pr-sentations-gel-bundle-autoportant-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./stories/ddr/DDR-017.mdx">ddr-ddr-017-cycle-de-vie-des-présentations-gel-bundle-autoportant--docs · ./stories/ddr/DDR-017.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-8-ddr-ddr-017-cycle-de-vie-des-pr-sentations-gel-bundle-autoportant-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+&lt;Meta
+  title=&#39;DDR/DDR-017 : Cycle de vie des présentations (gel &amp; bundle autoportant)&#39;
+  created=&#39;2026-06-22&#39;
+  status=&#39;proposé&#39;
+/&gt;
+
+# DDR-017 : Cycle de vie des présentations
+
+&gt; **Statut `proposé`.** Ce DDR fixe comment une présentation `nuxt-slides` qui
+&gt; embarque des écrans de Storybook **survit à l&#39;archivage puis à la suppression**
+&gt; de ces écrans ([DDR-016]). Il devient opposable au passage en `accepté`.
+
+## Contexte
+
+Une présentation `nuxt-slides` peut embarquer des écrans Storybook par **iframe**.
+Le couplage actuel (cf. `nuxt-slides/src/utils/storybook.ts`) est :
+
+- le deck déclare en frontmatter `storybook: http://localhost:6007` ;
+- chaque slide référence une story **par id** : `story=&quot;parti-retenu-accueil--page&quot;`
+  (annotation `:layout{story=&quot;…&quot;}` ou composant `&lt;StoryFrame story=&quot;…&quot;&gt;`).
+
+Conséquence : la présentation **dépend d&#39;un Storybook qui tourne** et **casse dès
+qu&#39;un id de story bouge** (rename, déplacement vers `_archives/`, suppression). Le
+couplage est *temporel* : la slide a besoin que la story existe au moment où on la
+regarde. Tant qu&#39;il subsiste, on ne peut **ni archiver ni supprimer** une
+exploration sans casser les présentations qui la citent — exactement ce que
+[DDR-016] cherche à débloquer.
+
+## Décision
+
+### 1. Une présentation diffusée est un livrable figé, pas une vue live
+
+Le Storybook **vivant** sert le travail interne en cours. Dès qu&#39;une présentation
+doit **survivre indépendamment** des écrans qu&#39;elle cite (diffusion externe,
+archivage de l&#39;exploration source), elle est **gelée** : on en produit un **bundle
+HTML statique autoportant** qui embarque sa propre photo des écrans, servie à la
+même origine (`/_storybook/`). Le bundle ne dépend plus de l&#39;arborescence vivante.
+
+L&#39;infrastructure existe déjà : `nuxt-slides/scripts/bundle-standalone.js`
+(`make bundle-standalone`). Elle copie un Storybook compilé dans le bundle, patche
+le frontmatter `storybook:` vers le chemin relatif, et `nuxt generate` produit un
+dossier déployable (GitHub Pages).
+
+### 2. Bundle **réduit** aux écrans réellement cités
+
+Le bundle de gel ne compile que les stories **référencées par le deck** :
+
+1. **Extraire les ids** du `.md` : `story=&quot;([^&quot;]+)&quot;` (annotations `:layout{…}` +
+   `&lt;StoryFrame&gt;`). Exemple vitrine : 6 ids distincts.
+2. **Résoudre id → fichier source via `index.json`.** On lit l&#39;index d&#39;un build
+   Storybook (la table autoritaire `id → importPath`), **pas** une re-dérivation
+   du `title`. C&#39;est crucial : les écrans vitrine épinglent un **`id` explicite**
+   (`meta.id = &#39;parti-retenu-…&#39;`) découplé du `title`
+   (`Candidats/Home vitrine/L&#39;accueil`) — voir §2.b. Re-slugifier le titre
+   donnerait un id faux. Lire l&#39;index rend en prime la **détection de référence
+   cassée** gratuite (id absent ⇒ slide vide).
+3. **Build Storybook filtré** sur les fichiers résolus. Storybook 10 construit par
+   **glob de fichiers** (`stories`), pas par id : on restreint le glob aux
+   `.stories.tsx` résolus. Vite suit ensuite le **graphe d&#39;imports** (socle, data,
+   kit) automatiquement — pas besoin de les énumérer.
+4. **Bundler** ce mini-Storybook avec le deck via `bundle-standalone`.
+
+&gt; Outillé de bout en bout par **`make bundle-frozen BUNDLE_SLUG=&lt;deck&gt;`**
+&gt; (`nuxt-slides`) : résout les ids (`freeze-deck.js`), construit le Storybook
+&gt; réduit (`STORYBOOK_STORIES_GLOBS` dans `.storybook/main.ts`), puis enchaîne sur
+&gt; `bundle-standalone`. **Échoue avant tout build** si le deck référence une story
+&gt; absente. `make freeze-check` donne le rapport seul, sans rien construire.
+&gt; Pré-requis : un `index.json` issu d&#39;un build complet (`make bundle-storybook`)
+&gt; pour la résolution. Validé sur `vitrine-t3-candidat-retenu` (bundle autoportant,
+&gt; Storybook réduit à 15 entrées, frontmatter patché vers `/_storybook`).
+
+#### 2.a-bis. Deux pièges d&#39;assets (surgis à la preuve visuelle)
+
+Le rendu réel du bundle a révélé deux défauts **du flow `bundle-standalone`
+lui-même** (pré-existants, pas introduits par le gel) :
+
+1. **`staticDirs` du Storybook en URL racine.** Les écrans référencent leurs
+   photos/fonts en absolu (`/vitrine/…`, `/fonts/…`). Dans le bundle ils vivent
+   sous `/_storybook/`, donc l&#39;iframe les demande à la racine du serveur → 404,
+   écran « en alt-text ». **Correctif** : `scripts/mirror-storybook-assets.js`
+   recopie les dossiers d&#39;assets du Storybook à la **racine** du bundle (sans
+   écraser les assets Nuxt), appelé par `bundle-standalone`.
+2. **Base URL et URLs racine codées en dur.** Le deck Nuxt charge certains assets
+   en absolu racine (`/themes/&lt;t&gt;.css`, `/backgrounds/…`, cf. `useTheme.ts`,
+   `config/presentation.ts`) — **insensibles à `baseURL`**. Servir le bundle sous
+   un sous-chemin (`/nuxt-slides/`) les casse. **Décision** : un bundle gelé se
+   sert **à son origine** → `make bundle-frozen` bâtit en **base `/`**
+   (`FROZEN_BASE_URL`). Le `/nuxt-slides/` reste réservé au déploiement GitHub
+   Pages (`deploy-standalone`).
+
+&gt; `GET /api/_auth/session 404` au démarrage est **attendu** et bénin : route
+&gt; serveur sans backend en statique.
+
+#### 2.a. Ce que le bundle réduit gagne — et ne gagne pas
+
+Vérifié sur le cas vitrine (4 fichiers source, 6 ids) :
+
+- **Surface** : l&#39;index passe de ~105 fichiers / 296 entrées à **4 fichiers /
+  15 entrées**. Le bundle ne navigue plus que les écrans du deck — fin de la
+  confusion « écrans dépassés embarqués ».
+- **Correction** : les 6 ids résolvent ; toute référence cassée est signalée
+  **avant** gel (le script sort en code 2).
+- **Poids : énorme, une fois l&#39;élagage ajouté (révisé 2026-06-22).** Le gros du
+  `storybook-static` (~95 Mo) vient des **assets statiques** : `staticDirs` =
+  `apps/web/public` est copié **en bloc** (87 Mo, ~116 photos vitrine) quelle que
+  soit la liste de stories. Or un deck réduit n&#39;en référence qu&#39;une fraction —
+  l&#39;atelier mécènes en utilise **0** (que des fontes, 800 Ko), la vitrine **12**
+  photos. Le reste est du déchet pur. **Contrairement à l&#39;hypothèse initiale,
+  l&#39;élagage est robuste et à très fort rendement** : on bâtit le Storybook réduit,
+  puis on **scanne son JS/CSS bâti** pour les URL d&#39;assets racine-absolues — après
+  bundling, toute référence transitive (data files, kit partagé, `url()` CSS) est
+  un littéral de chaîne, donc le scan attrape ce que le scan de source manque.
+  - *Piège validé* : les chemins photos sont émis en **template literals**
+    (` `/vitrine/…jpg` `) — le scanner doit inclure le backtick, sinon il
+    supprimerait des assets utilisés (attrapé en validation sur la vitrine).
+  - *Garde-fou* : `PRUNE_ASSETS=0` rebâtit avec le staticDir complet pour
+    diagnostiquer un asset manquant.
+  - *Résultat mesuré* : atelier **196 → 21 Mo**, vitrine **391 → 26 Mo** (ce
+    dernier cumulait aussi le bug d&#39;imbrication récursive, cf. ci-dessous). Le
+    `_storybook` passe de 95 à ~9–14 Mo. Preuve de justesse : un asset référencé
+    répond 200, un asset élagué répond 404.
+  - *Outil* : `nuxt-slides/scripts/prune-storybook-assets.js`, câblé dans
+    `make bundle-frozen` (défaut on). Override staticDir via `STORYBOOK_STATIC_DIR`
+    dans `.storybook/main.ts`.
+
+  Le gain de C est donc **la surface, la robustesse ET la taille**.
+
+#### 2.a-ter. Le bundle ne doit pas embarquer Nuxt ni les autres bundles
+
+Deux défauts d&#39;architecture surgis à l&#39;industrialisation du gel (révisé 2026-06-22) :
+
+1. **Imbrication récursive + assets aspirés (résolu 2026-06-22).** `nuxt generate`
+   copie tout `public/` dans sa sortie. Tant que l&#39;hébergement et le mirror d&#39;assets
+   vivaient SOUS `public/` (`public/frozen/&lt;alias&gt;/`, `public/vitrine/`, `public/fonts/`),
+   chaque nouveau bundle **aspirait les bundles déjà gelés ET leurs assets mirrorés**
+   — d&#39;où des photos *vitrine* retrouvées dans le bundle *atelier* (qui n&#39;en
+   référence aucune). `nitro.ignore` ne gouverne **que les routes**, pas la copie de
+   `public/`. **Correctif en deux temps** :
+   - **Sortir l&#39;hébergement de `public/`** : les bundles vivent dans `.frozen/&lt;alias&gt;/`,
+     le filet d&#39;assets dans `.frozen-mirror/`, servis à l&#39;origine par
+     `nitro.publicAssets` (`nuxt.config`). `nuxt generate` ne les voit plus jamais.
+   - **Rendre le bundle autoportant** : `scripts/rebase-storybook-assets.js` réécrit
+     les URL root-absolues des stories (`/vitrine/x`, `/fonts/x`) en **relatif** dans
+     le `_storybook` bâti, pour qu&#39;elles résolvent DANS le bundle (`_storybook/&lt;root&gt;/`).
+     ⚠️ **Piège du contexte de résolution** (attrapé à la preuve visuelle, 85 erreurs) :
+     un `url()` CSS résout contre la **feuille** (`_storybook/assets/`) → préfixe `../` ;
+     un littéral JS devenu `&lt;img src&gt;` résout contre le **document** (iframe.html à
+     `_storybook/`) → **sans** préfixe. Le rebaser applique donc un préfixe **par type
+     de fichier**. Le mirror `.frozen-mirror/` n&#39;est plus qu&#39;un filet future-proof
+     (un consommateur non-rebasé), pas une dépendance.
+2. **Nuxt-out : bundle Reveal-only (résolu 2026-06-22).** Le deck gelé était une app
+   Vue hydratée (`&lt;div id=&quot;__nuxt&quot;&gt;`, `_payload.json`, Reveal monté au runtime). On
+   embarquait un framework de **build** comme dépendance de **runtime**. Résolu **sans
+   navigateur headless** — la voie idiomatique passe par le rendu Nuxt, pas un
+   post-traitement :
+   - **Retirer `&lt;ClientOnly&gt;`** autour du deck : il *tree-shake le contenu du build
+     serveur*, donc tant qu&#39;il est là le deck ne peut PAS se pré-rendre. Le deck est
+     SSR-safe (tous les accès `window` sont en `onMounted`/`mounted`), sauf un piège :
+     une **directive `.client`** (`v-french-typography`) n&#39;existe pas au SSR →
+     `ssrGetDirectiveProps` plante sur `getSSRProps` undefined. Fix : `getSSRProps(){}`
+     + plugin universel (plus `.client`).
+   - **`features.noScripts`** (gated mode bundle) → Nuxt **n&#39;émet jamais** les scripts
+     d&#39;hydratation, `_payload`, modulepreload. À la source, pas de strip fragile.
+   - **`features.inlineStyles: () =&gt; true`** → tout le CSS inliné en `&lt;style&gt;`
+     (sinon le CSS scopé, chargé par le graphe JS qu&#39;on retire, est orphelin → slides
+     non stylées). On garde aussi les `_nuxt/*.css` (un import composable, `reveal.css`,
+     échappe au predicate `.vue`).
+   - **Plugin Nitro `render:html`** (`server/plugins/nuxtout-deck.ts`) : **ajout pur**
+     (reveal.css/js + `Reveal.initialize` depuis `DEFAULT_REVEAL_CONFIG`) + réécriture
+     d&#39;**attributs d&#39;URL** root-absolus → relatifs `../../` (le HTML est à
+     `slides/&lt;slug&gt;/`, profondeur 2). ⚠️ Le rebase doit être keyé sur la **cible du
+     chemin** (`/_storybook/`, `/vitrine/`…), PAS sur le nom d&#39;attribut : sinon le
+     lightbox Reveal `data-preview-link` échappe (bug attrapé : iframes 404 +
+     X-Frame-Options deny). Reveal.js dist copié dans le bundle par le Makefile.
+   - **CSS des composants MDC** : `inlineStyles` n&#39;inline QUE les composants du sas
+     SSR statique ; les slides sont rendues via le `&lt;MDCRenderer&gt;` dynamique, donc le
+     CSS des composants MDC (`StoryFrame`, `SplitSlide`, `SlideContent`…) échappe à la
+     collecte → leurs chunks `_nuxt/*.css` existent mais ne sont pas référencés. Fix :
+     `scripts/link-deck-css.js` lie TOUS les `_nuxt/*.css` dans le HTML (le JS qui les
+     chargeait est retiré). Sans ça, les iframes chargent mais s&#39;effondrent (CSS de
+     dimensionnement manquant).
+   - **Scaled-iframe SANS JS (CSS-only)** : la vraie dépendance JS résiduelle du deck
+     est `useScaledFrame` — un `ResizeObserver` mesure le pane, calcule `scale =
+     largeur/1440` et pose `width/height/transform` inline. `noScripts` le supprime →
+     l&#39;inline `height:0px` figé au SSR reste → iframes effondrées. **Reproduit en CSS
+     pur** via *container query units* : le pane devient `container-type:size`, l&#39;iframe
+     rend à `width:1440px` (logique desktop), et `transform:scale(calc(100cqw / 1440px))`
+     — le truc clé est `cqw / 1440**px**` (longueur÷longueur = nombre, ce que `scale()`
+     exige). La largeur du pane pilote le scale, **sans mesure JS**, auto-adaptatif à
+     tout layout. Injecté par le plugin (mode bundle). Prouvé : 10 iframes 695px, viewport
+     interne 1425px (fidélité desktop), remplit le pane. *NB lightbox : `data-preview-fit`
+     (contain/cover/scale-down) règle le cadrage du media DANS l&#39;overlay Reveal — piste
+     d&#39;amélioration source `StoryFrame.vue`, non incluse ici (touche aussi le live).*
+   - **Résultat** : `_nuxt` 4 Mo de JS → **~270 Ko de CSS seul** (0 JS) ; deck HTML
+     **100% autoportant Reveal** (0 réf Nuxt, `Reveal.isReady()`=true, 22 slides, 10
+     iframes Storybook **rendues inline en zoom desktop**, **0 erreur console**). Bundle
+     atelier **196 → 21 Mo**.
+
+#### 2.b. Pré-requis : épingler l&#39;`id` d&#39;une story embarquée
+
+Pour qu&#39;un deck survive à la promotion d&#39;un écran (exploration → candidat → DS),
+la story doit porter un **`id` explicite stable** dans son `meta`, indépendant du
+`title` (qui, lui, suit le rangement Storybook). C&#39;est déjà le cas des écrans
+vitrine (`id: &#39;parti-retenu-accueil&#39;`). **Règle** : toute story susceptible d&#39;être
+embarquée par une présentation épingle son `id` ; déplacer/renommer la story ne
+casse alors pas le deck.
+
+&gt; Garde-fou : si le build filtré casse un écran (dépendance non suivie), repli sûr
+&gt; sur le bundle complet (mécanisme A).
+
+### 3. Déclencheur — par défaut, **gel à l&#39;entrée en `_archives`**
+
+Trois moments possibles de gel ; le **défaut retenu** est le premier, les deux
+autres restent admis selon le cas :
+
+| Déclencheur | Règle | Quand le préférer |
+| --- | --- | --- |
+| **À l&#39;entrée en `_archives`** *(défaut)* | Quand une exploration entre en `Explorations/_archives/` ([DDR-016]), on gèle aussitôt les decks qui la citent. La suppression définitive ultérieure ne casse plus rien. | Présentation **déjà diffusée** publiquement et exploration en voie d&#39;archivage — **notre cas vitrine**. Découple tôt, sans surveillance. |
+| **À la suppression** | On garde l&#39;exploration archivée (encore vivante) tant qu&#39;on veut ; on ne gèle qu&#39;au moment de supprimer définitivement l&#39;archive. | Exploration encore susceptible de re-servir le travail interne ; on limite le nombre de bundles à maintenir. |
+| **À la diffusion** | Tout deck montré à un public externe est bundlé dès sa diffusion, indépendamment de l&#39;archivage. | Decks fréquemment rejoués devant des tiers ; le live ne sert qu&#39;en interne. |
+
+**Pour le premier cas (présentation vitrine, `vitrine-t3-candidat-retenu`)** : elle
+est publique et les explorations vitrine T3 partent en `_archives` ([DDR-016],
+Lot 4). On applique donc le **gel à l&#39;entrée en `_archives`** : on bundle le deck
+(réduit aux 6 écrans cités) *avant* de déplacer les explorations, puis l&#39;archive
+peut être supprimée plus tard sans rien casser.
+
+### 4. Inventaire du couplage avant toute suppression
+
+Avant d&#39;archiver/supprimer une exploration ([DDR-016] §4), produire la table
+**deck ↔ stories citées** (`grep &#39;story=&quot;…&quot;&#39;` sur `presentations/`). Aucune
+exploration n&#39;est supprimée tant qu&#39;un deck **non gelé** la cite encore.
+
+## Mécanismes (rappel des options instruites)
+
+| Réf | Approche | Tenu / écarté |
+| --- | --- | --- |
+| **A** | Bundle standalone **complet** (`bundle-standalone` tel quel) | **Repli sûr** quand le filtrage casse une dépendance. |
+| **B** | Snapshot image/PDF des écrans, iframes remplacées par visuels | Écarté par défaut : perd l&#39;interactivité (drawer, navigation in-frame). Utile pour un export print/PDF figé. |
+| **C** | Bundle **réduit** aux ids cités | **Retenu** : léger ET interactif. |
+
+## Décisions ouvertes
+
+- **Build complet préalable** : `make bundle-frozen` a besoin d&#39;un `index.json`
+  (build complet) pour résoudre les ids, *avant* de reconstruire en réduit. Deux
+  builds Storybook donc. Acceptable pour un gel ponctuel ; à optimiser (index seul)
+  si le gel devient fréquent.
+- Politique de **versionnage** des bundles gelés (où les déposer, nommage daté).
+- **Réduction du poids (assets) : faite** (cf. §2.a, révisé 2026-06-22) — élagage
+  des `staticDirs` au set réellement référencé, défaut on. Reste ouvert : le
+  **Nuxt-out** (pré-rendre le deck en HTML Reveal autoportant sans runtime Nuxt,
+  cf. §2.a-ter point 2) — étape suivante, risquée (rendu Vue/MDC).
+- **Bug pré-existant** du flow `bundle-standalone` (collision de route nitro
+  `api/presentations`, `EISDIR`) : non bloquant (bundle produit), mais à nettoyer
+  séparément — hors périmètre du gel.
+- Sort des decks `semi-private/` (non couverts ici, à instruire si besoin).
+
+&gt; **Câblage fait** (2026-06-22) : `make bundle-frozen` + `make freeze-check`
+&gt; opérationnels, garde anti-référence-cassée vérifiée.
+
+## Références
+
+- [DDR-016] — Archivage et ménage du book · `stories/ddr/DDR-016.mdx`
+- `nuxt-slides/scripts/freeze-deck.js` — résolution ids → fichiers + détection de
+  références cassées (prototype mécanisme C, validé sur le cas vitrine)
+- `nuxt-slides/scripts/bundle-standalone.js` · `make bundle-standalone`
+- `apps/storybook/.storybook/main.ts` · override `STORYBOOK_STORIES_GLOBS`
+- `nuxt-slides/src/utils/storybook.ts` · `buildStoryUrl`, `EMBED_SANDBOX`
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> DDR/DDR-018 : Cycle de vie des présentations diffusées (alias stable, registre, freeze)</h2>
+      <div class="badges">
+        
+        <label for="doc-9-ddr-ddr-018-cycle-de-vie-des-pr-sentations-diffus-es-alias-stable-registre-freeze-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./stories/ddr/DDR-018.mdx">ddr-ddr-018-cycle-de-vie-des-présentations-diffusées-alias-stable-registre-freeze--docs · ./stories/ddr/DDR-018.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-9-ddr-ddr-018-cycle-de-vie-des-pr-sentations-diffus-es-alias-stable-registre-freeze-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+&lt;Meta
+  title=&#39;DDR/DDR-018 : Cycle de vie des présentations diffusées (alias stable, registre, freeze)&#39;
+  created=&#39;2026-06-22&#39;
+  status=&#39;proposé&#39;
+/&gt;
+
+# DDR-018 : Cycle de vie des présentations diffusées
+
+&gt; **Statut `proposé`.** Prolonge [DDR-017] (gel d&#39;un deck) côté **diffusion** :
+&gt; comment un lien partagé reste **stable et accessible à vie** alors que sa source
+&gt; passe de *live collaboratif* (CodiMD) à *gelé* (bundle autoportant) puis
+&gt; *archivé*. Opposable au passage en `accepté`.
+
+## Contexte
+
+Une présentation traverse aujourd&#39;hui trois états mal articulés :
+
+| État | Où | Sert à | Lien Storybook |
+| --- | --- | --- | --- |
+| **Live** | note CodiMD (`md.…/&lt;noteId&gt;`) | éditer à plusieurs en séance | preview de PR / publié |
+| **Repo** | `presentations/&lt;statut&gt;/&lt;slug&gt;.md` | versionner | `localhost:6007` |
+| **Gelé** | bundle autoportant ([DDR-017]) | survivre sans Storybook live | `/_storybook` |
+
+Frictions constatées :
+
+1. **Réplication manuelle CodiMD ↔ repo** → forks et versions parallèles qui
+   divergent.
+2. **Le lien Storybook a trois valeurs** pour la même intention (local / preview /
+   gelé), éditées à la main selon le contexte.
+3. **Le lien diffusé pointe vers la source la plus volatile.** L&#39;URL partagée
+   (`/slides/codimd/&lt;id&gt;`) **re-fetche la note CodiMD à chaque visite**. Archiver
+   la piste ou nettoyer la note **casse un lien déjà diffusé** — l&#39;inverse de ce
+   qu&#39;on veut.
+4. **`/slides/codimd/&lt;id&gt;` est long et opaque** (id CodiMD non lisible).
+
+Le nœud : *un lien diffusé doit être le point le plus stable du système, or il
+pointe vers le plus instable.*
+
+## Ce qui existe déjà (à ne pas réinventer)
+
+- Un stub repo peut déclarer `source: codimd` + `noteId:` : `/slides/&lt;slug&gt;`
+  **récupère le corps CodiMD en live tout en gardant le frontmatter du repo**
+  (lien Storybook, thème, contrôle d&#39;accès). Cf.
+  `server/api/presentations/[slug].get.ts`. Un slug repo *peut donc déjà* être une
+  présentation live-collaborative.
+- Les **dossiers de statut** (`public/draft/private/semi-private`) portent le
+  **contrôle d&#39;accès** — axe distinct du cycle de vie de contenu.
+
+Il manque : un **axe de cycle de vie** (live → gelé → archivé) orthogonal à
+l&#39;accès, un **alias stable joli**, et leur résolution.
+
+## Décision
+
+### 1. Un registre versionné, source de vérité des alias
+
+Un fichier unique `presentations/registry.yml` (versionné) mappe un **alias
+stable** vers sa résolution. Exemple :
+
+```yaml
+# slug-joli → résolution
+atelier-mecenes:
+  title: Atelier mécènes — maquettes live
+  lifecycle: frozen          # live | frozen | archived
+  source: codimd             # provenance du corps quand live
+  noteId: R90umc1HTWeLTAM9Ay90TA
+  frozenBundle: atelier-mecenes        # dossier du bundle gelé (si frozen)
+  storybook: pr-preview-1234           # alias Storybook (cf. §3)
+  access: public
+```
+
+- **`lifecycle`** pilote *d&#39;où vient le contenu* : `live` → fetch CodiMD ;
+  `frozen` → sert le bundle autoportant ([DDR-017]) ; `archived` → idem gelé, mais
+  retiré des listes (le lien reste résolu).
+- **`access`** reste l&#39;axe orthogonal (public/draft/…), inchangé.
+- Le registre est **la** liste faisant foi ; les `.md` du repo deviennent des
+  **stubs** (frontmatter + éventuel corps de repli), plus des répliques à
+  maintenir à la main.
+
+### 2. Un chemin court et stable : `/p/&lt;alias&gt;`
+
+Nouvelle route **`/p/&lt;alias&gt;`** (plus court que `/slides/codimd/&lt;id&gt;`), résolue
+**via le registre** :
+
+- `lifecycle: live` → comportement actuel (fetch CodiMD), éditable en séance.
+- `lifecycle: frozen|archived` → sert le **bundle gelé**, sans toucher CodiMD.
+
+**L&#39;URL ne change jamais** entre les états : `/p/atelier-mecenes` pointe vers le
+live pendant la prépa, vers le gelé après diffusion. C&#39;est l&#39;alias stable
+recherché. `/slides/codimd/&lt;id&gt;` et `/slides/&lt;slug&gt;` restent en **redirection**
+vers `/p/&lt;alias&gt;` pour ne casser aucun lien déjà partagé.
+
+### 3. Un alias Storybook unique (fin de la valeur en dur)
+
+Le frontmatter ne porte plus une URL Storybook en dur mais un **alias** résolu
+selon l&#39;environnement, par une table du registre (ou `.env`) :
+
+```yaml
+storybookTargets:
+  local: http://localhost:6007
+  pr-preview-1234: https://storybook-pr-1234.…
+  frozen: /_storybook         # injecté par le freeze
+```
+
+Un deck déclare `storybook: pr-preview-1234` ; en local on résout vers
+`localhost:6007`, au gel vers `/_storybook` (déjà fait par [DDR-017]). **Une seule
+intention, trois résolutions** — fin de l&#39;édition manuelle.
+
+### 4. Le freeze à la diffusion (rituel)
+
+Quand une présentation passe de `live` à `frozen` :
+
+1. **Rapatrier** le corps CodiMD dans le stub repo (commande `make pull-note
+   BUNDLE_SLUG=&lt;alias&gt;` — fetch `/&lt;noteId&gt;/download`, écrit le `.md`). Fin de la
+   réplication manuelle.
+2. **Geler** via `make bundle-frozen` ([DDR-017]) → bundle autoportant.
+3. **Basculer** `lifecycle: frozen` dans le registre. L&#39;URL `/p/&lt;alias&gt;` sert
+   désormais le gel ; le lien diffusé survit.
+4. **Sort du live, au cas par cas** : la note CodiMD peut être conservée (lecture
+   seule) ou archivée/supprimée — le champ `lifecycle` tranche par présentation,
+   pas une règle globale.
+
+### 5. Archivage côté repo
+
+`lifecycle: archived` retire la présentation des **listes** (index, navigation)
+mais **garde l&#39;alias résolu** vers son bundle gelé. C&#39;est l&#39;équivalent decks de la
+zone `_archives` des explorations ([DDR-016]) : on désencombre sans casser les
+liens.
+
+## Application aux deux cas réels
+
+| Alias | CodiMD (noteId) | Stub repo | Cible | À faire |
+| --- | --- | --- | --- | --- |
+| `atelier-mecenes` | `R90umc1HTWeLTAM9Ay90TA` | `public/atelier-mecenes.md` | `frozen` | rapatrier + geler + bascule |
+| `pistes-vitrine-t3` | `Jzryk3IHTS2UUqpMxaZMUg` | `public/pistes-vitrine-t3-2026.md` | à décider (`frozen` probable) | idem |
+
+&gt; ⚠️ Les deux liens **prod diffusés** fournis pointent vers la **même** URL
+&gt; (`…/slides/codimd/CXls8xC6-s`) — vraisemblablement un copier-coller. À lever
+&gt; avant migration : chaque alias doit résoudre vers **sa** note. Le registre rend
+&gt; cette collision visible (deux alias, deux `noteId`, une seule URL diffusée).
+
+## Socle implémenté (2026-06-22)
+
+- **Registre** `presentations/registry.yml` + `server/utils/registry.ts`.
+- **Route stable** `/p/&lt;alias&gt;` (`src/pages/p/[alias].vue` + `server/api/p/[alias].get.ts`) :
+  `live` → frontmatter du stub + corps CodiMD ; `frozen|archived` → redirige vers
+  le bundle hébergé. **Édition manuelle du frontmatter du stub préservée** (lien
+  Storybook par fichier conservé), comme demandé.
+- **Convergence des chemins legacy** : middleware `alias-redirect.ts` 301 **tout**
+  `/slides/&lt;x&gt;` qui résout à une entrée du registre — par alias canonique, par
+  **slug du stub**, ou par chemin historique (`/slides/codimd/&lt;id&gt;`) — vers
+  `/p/&lt;alias&gt;`. Garantit une **source de vérité unique** : `/slides/&lt;slug&gt;` ne peut
+  plus servir une copie *différente* (stub brut, non gelée) de `/p/&lt;alias&gt;`. Les
+  decks **hors registre** passent sans interception (200), la route canonique
+  `/p/&lt;alias&gt;` n&#39;est jamais touchée. *(Risque identifié : `/slides/&lt;slug&gt;` et
+  `/p/&lt;alias&gt;` servaient deux contenus distincts — résolu.)*
+- **Rapatriement** : `make pull-note` (CodiMD → stub, frontmatter préservé).
+- **Champ `access`** : lève l&#39;ambiguïté quand un même slug existe dans plusieurs
+  dossiers (cas réel rencontré : `atelier-mecenes` en `public/` ET `semi-private/`).
+- **Id épinglé** : la story embarquée porte `meta.id` stable (DDR-017 §2.b) — sans
+  quoi un renommage de story casse le deck (cas réel : la story atelier avait été
+  renumérotée `05-…` → `…-mai-2026`, les embeds du deck étaient cassés).
+
+### Hébergement des bundles gelés — quick-win retenu
+
+Le bundle gelé est copié sous **`.frozen/&lt;alias&gt;/`** (HORS `public/`, servi par
+`nitro.publicAssets` à `/frozen/&lt;alias&gt;/`), via `make freeze-presentation`.
+`/p/&lt;alias&gt;` redirige vers lui quand `lifecycle: frozen`. Simple, sans infra,
+l&#39;URL diffusée reste stable. *(Hors `public/` car `nuxt generate` aspire tout
+`public/` → un bundle aspirerait les autres ; cf. [DDR-017] §2.a-ter.)*
+
+### Provenance embarquée — le bundle est ré-engendrable seul
+
+Chaque bundle gelé embarque un dossier **`source/`** (« au cas où ») pour rester
+ré-engendrable et traçable sans le repo :
+
+- **`&lt;slug&gt;.md`** — le markdown SOURCE fidèle au repo (frontmatter d&#39;origine).
+- **`&lt;slug&gt;--standalone.md`** — la variante patchée qui a *réellement* produit le
+  bundle (`storybook: /frozen/&lt;alias&gt;/_storybook`).
+- **`provenance.json`** — alias, slug, thème, date de gel, **commit git**.
+- **`registry-entry.yml`** — l&#39;entrée registre complète (noteId source, lifecycle…).
+
+Ainsi, depuis le seul bundle diffusé, on sait d&#39;où il vient, à quel commit, et on
+peut le re-geler / re-diffuser à l&#39;identique.
+
+### Convergence des liens — côté CLIENT aussi (résolu 2026-06-22)
+
+Le middleware `alias-redirect` est **serveur-only** : il converge `/slides/&lt;slug&gt;`
+→ `/p/&lt;alias&gt;` au reload mais PAS en navigation SPA. Donc l&#39;index ne doit pas lier
+le legacy `/slides/&lt;slug&gt;` mais **directement `/p/&lt;alias&gt;`** : `/api/presentations`
+expose désormais l&#39;`alias` (depuis le registre), et la home lie `/p/&lt;alias&gt;` quand
+présent (fallback `/slides/&lt;slug&gt;` hors-registre). Le middleware reste le filet
+pour les liens externes déjà diffusés.
+
+## Décisions ouvertes
+
+- **Rapatriement &amp; ids** : `pull-note` réécrit le corps depuis CodiMD ; si la note
+  porte des ids de story périmés, le gel les ré-introduit. À terme : une **table de
+  réécriture d&#39;ids** au rapatriement, ou corriger la note source.
+- **Push repo → CodiMD** : non implémenté (risque d&#39;écraser une édition live).
+- **Poids/versionnage** des bundles hébergés sous `public/frozen/` (commit vs
+  hors-repo). Lié à [DDR-017].
+- **Renommage de route** : `/p/` retenu ; alternatives `/d/`, `/v/`.
+
+## Références
+
+- [DDR-016] — Archivage du book (zone `_archives`) · `stories/ddr/DDR-016.mdx`
+- [DDR-017] — Gel d&#39;un deck (bundle autoportant) · `stories/ddr/DDR-017.mdx`
+- `nuxt-slides/server/api/presentations/[slug].get.ts` — fetch CodiMD + frontmatter repo
+- `nuxt-slides/server/api/codimd/[noteId].get.ts` — route CodiMD directe (à rediriger)
+- `nuxt-slides/server/utils/presentations.ts` — résolution slug + statut d&#39;accès
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> DDR/DDR-019 : Feuille de route du socle design system (classement, inventaire, dépendances)</h2>
+      <div class="badges">
+        
+        <label for="doc-10-ddr-ddr-019-feuille-de-route-du-socle-design-system-classement-inventaire-d-pendances-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./stories/ddr/DDR-019.mdx">ddr-ddr-019-feuille-de-route-du-socle-design-system-classement-inventaire-dépendances--docs · ./stories/ddr/DDR-019.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-10-ddr-ddr-019-feuille-de-route-du-socle-design-system-classement-inventaire-d-pendances-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+&lt;Meta
+  title=&#39;DDR/DDR-019 : Feuille de route du socle design system (classement, inventaire, dépendances)&#39;
+  created=&#39;2026-06-22&#39;
+  status=&#39;proposé&#39;
+/&gt;
+
+# DDR-019 : Feuille de route du socle design system
+
+&gt; **Statut `proposé`.** Boussole du chantier de fond : faire de la zone
+&gt; `Candidats` le socle solide d&#39;un vrai design system pour un service à deux
+&gt; faces — **webapp sous auth** + **site vitrine**. Ce DDR pose la **doctrine de
+&gt; classement**, l&#39;**inventaire cible**, la **cartographie des manques de
+&gt; fondation** et le **graphe de dépendances** adossé au planning produit. Il
+&gt; n&#39;implémente rien : il oriente. Opposable au passage en `accepté`.
+
+## Contexte
+
+Le ménage des explorations est clos ([DDR-016]). Restait le cœur : les
+`Candidats` ([DDR-011]) étaient un sas hétérogène, sans partition claire entre
+ce qui sert la **webapp**, la **vitrine**, ou les **deux**. En parallèle, deux
+composants vivaient en « Design system » sans être réellement câblés dans
+l&#39;application — un design system n&#39;est crédible que si « stabilisé » veut dire
+« utilisé en production ».
+
+Trois constats ont structuré ce DDR :
+
+1. **Le critère « câblé » n&#39;était pas tenu.** `CarteContenu` et `ThematiqueScope`
+   étaient documentés en Design system avec **zéro consommateur applicatif**.
+2. **Le socle vitrine candidat est plus mûr que le webapp candidat** — l&#39;inverse
+   de l&#39;intuition initiale. L&#39;effort de structuration doit donc partir de la
+   vitrine, qui porte les deux échéances les plus proches.
+3. **Les fondations transverses sont implicites et disparates** — l&#39;élévation au
+   premier chef (tokens existants mais contournés partout), puis les surfaces
+   greige, les rayons, les espacements.
+
+## Décision
+
+### 1. Doctrine de classement
+
+- **Design system** = un composant n&#39;y figure que s&#39;il est **importé par au
+  moins une page applicative live** (hors Storybook). Sinon il est `Candidat`.
+- **`Candidats/{Partagé, Vitrine, Webapp}`** : trois zones.
+  - **Partagé** : ce qui sert les deux faces — primitives (carte, badges) et
+    doctrines transversales (états &amp; messages).
+  - **Vitrine** : site public (socle vitrine, home, référentiel, thématique, en
+    savoir plus, palette vitrine).
+  - **Webapp** : espace authentifié (collections, édition, parcours,
+    embarquement, grammaire de surfaces).
+- **Convention de nommage** : slug technique (dossiers, routes, ids) = `shared` ;
+  label humain (titres Storybook) = **« Partagé »**.
+- **Principes transversaux** : rangés **au cas par cas**, d&#39;après ce que le
+  sujet dit de lui-même. Exemple tranché : `grammaire-de-surfaces`, malgré une
+  portée d&#39;élévation transverse, est ancrée « espace membre » par son DDR-005 →
+  classée **Webapp** (les faits priment sur la vocation prospective).
+
+#### Rétrogradations actées
+
+| Sujet | Avant | Après | Motif |
+| --- | --- | --- | --- |
+| Carte de contenu | `Design system/Briques/Partagé` | `Candidats/Partagé/Briques` | 0 consommateur applicatif |
+| Thématiques | `Design system/Fondations` | `Candidats/Partagé/Fondations` | 0 consommateur (expose `thematique-scope`) |
+| Palette vitrine | `Design system/Fondations` | `Candidats/Vitrine/Fondations` | sous-ensemble thématique vitrine |
+
+&gt; Le **code** de ces composants reste sa source dans `apps/web/src` (intouché) ;
+&gt; seule la **classification Storybook** change. La rétrogradation n&#39;est pas un
+&gt; abandon : carte et `thematique-scope` sont au contraire **en tête de file de
+&gt; promotion** (cf. §4, chemin critique Home).
+
+### 2. Inventaire cible (par zone × échelle)
+
+Échelles : **fondations → briques → compositions → modèles de pages**.
+
+**Partagé**
+
+| Échelle | Sujet | Statut |
+| --- | --- | --- |
+| Fondations | Thématiques (référentiel + couleurs) | candidat mûr |
+| Briques | Carte de contenu | candidat mûr, **à câbler** |
+| Briques | Badges &amp; étiquettes | candidat |
+| Doctrine | États &amp; messages (vides/erreurs/toasts) | candidat |
+
+**Vitrine**
+
+| Échelle | Sujet | Statut |
+| --- | --- | --- |
+| Fondations | Palette vitrine | candidat mûr |
+| Briques | Section, Eyebrow heading, Grille colonnes, Bloc pédagogique | candidat mûr |
+| Compositions | Panneau CTA, Gestes de composition, Sections canoniques | candidat mûr |
+| Écrans | Home, Référentiel, Thématique (+ drawer), En savoir plus | candidat mûr |
+
+**Webapp**
+
+| Échelle | Sujet | Statut |
+| --- | --- | --- |
+| Fondations | Grammaire de surfaces (élévation, conteneurs) | candidat, **chrome ouvert** |
+| Briques | (PageContent, PageHeader, Sidebar… déjà **stabilisés** en DS) | DS câblé |
+| Écrans | Embarquement, Parcours, Collections, Édition | candidat |
+
+&gt; **Manque structurel webapp** : le candidat webapp est moins fourni que la
+&gt; vitrine. À étoffer après les échéances vitrine (layout espace, 09/07).
+
+### 3. Cartographie des manques de fondation (enjeux, **sans implémentation**)
+
+Ces fondations sont **identifiées** ; l&#39;élévation (§3.1) et les surfaces greige
+(§3.2) sont **tranchées**, les rayons/espacements/typo (§3.3) attendent encore.
+On ne réplique pas le DSFR — on s&#39;en éloigne en partie pour gagner en **chaleur**.
+
+#### 3.1 Élévation / ombres — *tranché (A1, 22/06/2026)*
+
+&gt; **Statut : décidé et gravé.** Anciennement l&#39;enjeu phare (4 tokens
+&gt; `--shadow-carte*` froids, mono-couche, non documentés, contournés par ~25
+&gt; valeurs `shadow-[…]` ad hoc à 3 teintes mélangées). Arbitré par Lucas.
+
+**Échelle canonique retenue** — 5 niveaux **nommés par rôle**, gravés dans
+`apps/web/src/client/composants/tailwind.css` (`@theme`) :
+
+| Rôle | Utilitaire | Token |
+| --- | --- | --- |
+| plate | *(aucun)* | `none` |
+| repos | `shadow-repos` | `--shadow-repos` |
+| survol | `shadow-survol` | `--shadow-survol` |
+| flottant | `shadow-flottant` | `--shadow-flottant` |
+| vedette | `shadow-vedette` | `--shadow-vedette` |
+
+**Doctrine** (divergence assumée du DSFR, pour la chaleur) :
+
+- **teinte unique chaude** `--ombre-teinte: 40 34 28` (taupe-greige), en
+  remplacement du noir pur et des 3 teintes mélangées — accordée au greige des
+  surfaces ;
+- **2 ombres superposées par niveau** : *contact* (offset/blur courts, dense) +
+  *ambiance* (offset/blur larges, diffuse) — une ombre simple « fait cheap » ;
+- les anciens noms `--shadow-carte*` (jamais mergés sur `main`, introduits sur
+  cette branche le 20/06) sont **renommés par rôle** : « carte » était trompeur,
+  l&#39;échelle sert aussi hero et drawer.
+
+Fondation documentée : story **« Échelle d&#39;ombres »** — spec d&#39;intégration (table
+de référence + à faire/à éviter + mises en situation). À articuler avec l&#39;« échelle
+d&#39;élévation (5 rôles) » webapp de [DDR-005] — convergence, pas duplication.
+
+**Ralliement** : les **écrans candidats vitrine** (Storybook) sont **ralliés** sur
+les utilitaires (référentiel, thématique, panneau CTA + démos). Restent à traiter,
+hors de ce passage : les `shadow-[…]` côté `apps/web/src` et la zone `webapp`, plus
+le drawer latéral asymétrique `-16px 0 …` (à traiter comme **variante
+directionnelle**).
+
+#### 3.2 Surfaces / greige — *tranché (A2, 22/06/2026)*
+
+&gt; **Statut : décidé et gravé.** Recadrage clé : le greige n&#39;est **pas une échelle
+&gt; de profondeur** (ce rôle est tenu par l&#39;ombre, §3.1). C&#39;est une **teinte de
+&gt; fond** qui ne parle qu&#39;**en combinaison** — empilée sur elle-même, elle se
+&gt; neutralise.
+
+**Décision.** Le **taupe léger** (undertone chaud R&gt;G&gt;B, accordé à
+`--ombre-teinte`, volontairement très clair) devient le fond `greige` de
+`SectionVitrine` et **remplace le gris froid `alt-grey`** dans le rôle
+d&#39;alternance neutre — plus clair, plus chaud, cohérent avec l&#39;ombre. La grammaire
+vitrine est donc : **`white` · `greige` · `alt-blue` · `blue`** (+ `thematique`
+ponctuel). `alt-grey` est **retiré côté vitrine** mais reste valide en **classe
+brute côté webapp** (page-shell, [DDR-005]).
+
+| Token | Valeur | Utilitaire |
+| --- | --- | --- |
+| `--color-surface-greige` | `#faf8f3` | `bg-surface-greige` (fond de section) |
+| `--color-surface-greige-carte` | `#f4efe7` | `bg-surface-greige-carte` (fond de carte) |
+
+**Règle d&#39;or** : jamais deux fonds de même famille superposés — section greige →
+cartes blanches, section blanche → cartes greige ; l&#39;**ombre** porte la
+profondeur. La chaleur est subliminale, elle parle par *contraste*.
+
+**Où c&#39;est gravé.** Feuille **`tokens-candidats.css`** (Storybook-only, importée
+par `stories.css` ; l&#39;app charge `core.css`) — pas dans `tailwind.css` de prod,
+tant que non câblé. Promotion = déplacer le token vers `tailwind.css`. Fondation
+documentée : story **« Couleurs de fond &amp; alternance »**.
+
+**Ralliement fait.** Les constantes `*_GREIGE` de `gestes-vitrine.tsx` sont
+devenues des **alias** des deux tokens (`CANVAS/SECTION_GREIGE → surface-greige`,
+`DALLE_GREIGE* → surface-greige-carte`) ; les valeurs en dur `beige-gris-galet`
+des écrans sont ralliées ; la **toolbar greige** (presets custom/dsfr) est
+**retirée** (système `var(--greige-*)` mort). Recoupe la « gamme de conteneurs »
+de [DDR-005].
+
+#### 3.3 Rayons — *tranché (audit du 22/06)*
+
+&gt; **Statut : décidé et gravé.** Audit fait : `rounded-2xl` (×33), `3xl` (×9),
+&gt; `full` (×10) + **4 valeurs ad hoc** `rounded-[1.75rem/2rem/2.5rem]`. Des rôles
+&gt; nets se dégageaient ; on les a **nommés sans changer le rendu**.
+
+**Échelle de rayons par rôle** (tokens dans `tokens-candidats.css`) :
+
+Rôles en **anglais** (convention tokens) :
+
+| Rôle | Token | Valeur | Usage |
+| --- | --- | --- | --- |
+| control | `rounded-control` | 8px | bouton, input, petit encart |
+| card | `rounded-card` | 16px | carte de contenu, tuile |
+| panel | `rounded-panel` | 24px | panneau CTA, hero, grande carte |
+| tile | `rounded-tile` | 32px | collage photo, dalle, grille XL |
+| pill | `rounded-full` natif | — | chip, pastille |
+
+**Ralliement fait** : les 4 ad hoc + tous les `rounded-2xl→carte` / `3xl→panneau`
+des candidats vitrine sont ralliés (rendu identique, valeurs égales). Le code lit
+désormais un **rôle**, jamais une taille. `apps/web/src` intouché.
+
+#### 3.4 Gris de texte — *tranché (audit du 22/06)*
+
+&gt; **Statut : décidé et rallié.** Deux gammes de gris de texte coexistaient : la
+&gt; gamme **DSFR** tokenisée (title / default / mention grey, ~117 usages, dans les
+&gt; vrais écrans) et la gamme **Tailwind `neutral-*`** (~20 usages, **uniquement
+&gt; dans les bancs de fondation**, dette introduite par ces bancs).
+
+**Décision : une seule gamme de texte, la DSFR.** `text-neutral-*` est **banni**
+de la vitrine. Mapping rallié :
+
+| Tailwind | → Rôle DSFR | Valeur |
+| --- | --- | --- |
+| `neutral-800` | `text-(--color-dsfr-text-title-grey)` | `#161616` |
+| `neutral-700` | `text-(--color-dsfr-text-default-grey)` | `#161616` |
+| `neutral-600/500/400` | `text-(--color-dsfr-text-mention-grey)` | `#666666` |
+
+Aucun autre gris hors-système (`text-[#…]`, `gray/slate/zinc`) dans la vitrine.
+`apps/web/src` intouché.
+
+#### 3.5 Hairline (filet) — *tranché (audit du 22/06)*
+
+&gt; **Statut : décidé et rallié.** `ring-1 ring-black/5` (×20, + 2× `/6`) = un filet
+&gt; de séparation discret, identifiable mais non nommé.
+
+**Décision.** Token `--color-filet` (→ `ring-filet` / `border-filet`), **accordé à
+la chaleur** : `rgb(40 34 28 / 0.08)` — undertone taupe (`--ombre-teinte`) au lieu
+du noir pur. Les 22 `ring-black/N` des candidats vitrine sont **ralliés** sur
+`ring-filet` (à poser avec `ring-1`). `apps/web/src` intouché.
+
+#### 3.6 Motion — *doctrine de retenue (audit du 22/06, sans token)*
+
+&gt; **Statut : doctrine documentée + nettoyage appliqué.** Tailwind v4 n&#39;expose pas
+&gt; de namespace pour des durées nommées ; on documente la convention, le code reste
+&gt; idiomatique. **Principe : la motion sert, elle ne s&#39;annonce pas.** Peu de
+&gt; transitions ; la profondeur (l&#39;ombre A1) porte déjà le feedback.
+
+**✅ Encouragé** (l&#39;objet ne bouge pas) : ombre `repos→survol`
+(`hover:shadow-survol`), couleur/bordure, translation d&#39;un *indice* (flèche
+`group-hover:translate-x-0.5`, opacité révélée).
+
+**❌ Banni** (suggère une interactivité absente / trop voyant) : **zoom/`scale`
+sur image**, **soulèvement `-translate-y` du bloc**, `transition-all`, durée
+≥ 500ms sur du hover, parallax, entrées décoratives sur du texte.
+
+**Nettoyage appliqué (22/06)** : 2 zooms photo (`scale`, `duration-500`) retirés,
+7 soulèvements `-translate-y` retirés (carte/chip/bouton), `transition-[transform,
+box-shadow]` ramené à `transition-shadow` quand seul le shadow anime, transitions
+orphelines supprimées. Les flèches-indices (`group-hover:translate-x`) conservées.
+
+| Durée | Rôle | Quand |
+| --- | --- | --- |
+| `duration-200` | rapide | hover (ombre, couleur, indice) |
+| `duration-300` | standard | drawer, transition interne |
+| `duration-500` | ample | **rare**, transitions non-hover seulement |
+
+Story de référence : **« Motion (doctrine) »** (effets encouragés + contre-exemples).
+
+#### 3.7 Reste à instruire (typo, espacements)
+
+- **Typographie** : titres sur l&#39;échelle Tailwind (`text-2xl→5xl`), 1 ad hoc. Le
+  trou est la **doctrine de rôle** (H1 hero vs H2 section), pas les valeurs.
+- **Espacements** : sur l&#39;échelle Tailwind, pas de dispersion notable — rien à
+  graver.
+
+#### 3.8 Dette adjacente
+
+Duplication de données : `stories/_data/{icones-thematiques, referentiel-engagement}`
+coexiste avec `candidats/vitrine/socle-vitrine/data/` (contenus **divergents**,
+pas de simples copies). À réconcilier — hors périmètre de ce chantier.
+
+### 4. Graphe de dépendances (Home et Catalogue d&#39;abord)
+
+**Home vitrine — 25/06** · `PageAccueilRetenue`
+
+```
+PageAccueilRetenue
+├─ HeroBentoNet ............ Socle + Gestes + ⚠ ThematiqueScope
+├─ BeneficesCollagePicto ... Socle + Gestes
+└─ ParOuCommencerImages .... Socle + Gestes + ⚠ CarteContenu
+```
+
+**Catalogue d&#39;engagement — 01/07** · Référentiel + Thématique
+
+```
+Référentiel ──► CarteVedette ........ Socle + ⚠ ThematiqueScope
+Thématique  ──► CarteEngagement ...... Socle + ⚠ ThematiqueScope
+            └─► EngagementDrawer ...... Socle + ⚠ ThematiqueScope
+```
+
+**Fondations communes**
+
+```
+Socle vitrine (candidat mûr)
+  briques ...... Section · Eyebrow · Grille · PanneauCTA · BlocPedagogique
+  gestes ....... CollageMedia · TuilePhoto · CarteChiffre · PastillePicto
+  données ...... thématiques · actualités · clubs · photos
+
+⚠ Partagé — à câbler EN PREMIER (non câblé aujourd&#39;hui)
+  CarteContenu · ThematiqueScope
+```
+
+**Chemin critique 25/06** : la Home dépend de `ThematiqueScope` (hero) et de
+`CarteContenu` (par-où-commencer), tous deux **non câblés** aujourd&#39;hui. Leur
+**promotion en Partagé câblé est le prérequis n°1** de la Home.
+
+### 5. Séquencement macro (adossé au planning produit)
+
+Ordre de promotion, énoncé comme cap — **sans création d&#39;issues à ce stade** :
+
+1. **Partagé câblé** : `ThematiqueScope` + `CarteContenu` (prérequis Home).
+2. **Socle vitrine** stabilisé (Section/Eyebrow/Grille/PanneauCTA + gestes).
+3. **Home** — *25 juin 2026* (maquettes Lucas le 23/06, textes+images le 25/06).
+4. **Catalogue d&#39;engagement** (référentiel + thématique + drawer) — *1er juillet 2026*.
+5. **Layout espace entreprise** (webapp ; étoffer le candidat webapp, grammaire
+   de surfaces) — *9 juillet 2026*.
+6. **Pages événement** (s&#39;appuie sur Carte de contenu partagée + socle) — *23 juillet 2026*.
+
+### 6. Brique pivot : la carte de contenu
+
+La carte est l&#39;objet le plus dupliqué de la vitrine : chaque écran réinventait la
+sienne. Doctrine : **une brique pivot couvre la plupart des cas**, on n&#39;autorise
+des cartes ad hoc que pour des registres qu&#39;elle ne sait pas porter sans se
+dénaturer.
+
+**`CarteContenu`** (`@candidats/shared/briques/carte-contenu`) est cette brique.
+Rapatriée du code applicatif (0 conso prod → candidat, cf. §1), elle est le
+squelette versatile : c&#39;est l&#39;instanciation (slots + libellés) qui définit
+l&#39;usage. Axes :
+
+- **Structure** : `orientation` (verticale / horizontale), `taille`
+  (**`sm · md · lg`** — 3 registres ; l&#39;usage réel n&#39;en demande pas plus),
+  `ratioImage`, `largeurImage`.
+- **Lien** : `complet` (pied CTA) · `picto` (cliquable, flèche coin) · `bloc`
+  (cliquable + libellé en pied) · `aucun`. `as=&quot;a&quot;|&quot;button&quot;` : naviguer **ou**
+  actionner (drawer/dialog) sans changer de page — un seul focusable.
+- **Teinte** : `neutre` (blanc + filet) · `thematique` (voile `--thematique-bg`
+  + accents `--thematique-main`, **pilotés par un `ThematiqueScope` parent** ;
+  la carte est agnostique, elle lit les variables). La carte fusionne le `style`
+  injecté par le scope (`asChild`) avec son voile — sinon `color-mix` est vide.
+
+**Grammaire de contenu (slots typés par rôle — la forme dit le rôle, DDR-010).**
+Une carte porte, au-delà de `titre` / `description` / CTA :
+
+| Slot | Rôle | Primitive | Forme |
+|---|---|---|---|
+| `categorie` | catégorie / mot-clé (éditorial, stable) | **`Etiquette`** | pill, casse normale |
+| `etat` | statut (système, varie dans le temps) | **`Badge`** | carré, MAJUSCULES |
+| `meta` | donnée neutre (lieu, durée, **date**) | gris muted + picto | au-dessus du CTA |
+| `medaillon` | picto d&#39;accroche (cartes sans image) | en tête de corps | — |
+
+Mémo **arrondi = catégorie, carré = état**. La **meta n&#39;est jamais bleue** (le
+bleu est réservé à l&#39;interactif) ; une catégorie n&#39;est PAS une meta (« Actualité »
+= `categorie`, pas une ligne meta).
+
+**Pas de `surtitre` / eyebrow.** L&#39;ancien surtitre gris au-dessus du titre est
+**supprimé** : il mélangeait dates (→ `meta`), catégories (→ `categorie`) et
+numéros (souvent un doublon du titre). Chaque donnée a désormais un slot typé —
+plus d&#39;eyebrow ambigu.
+
+**Emplacement des marqueurs** : `emplacementMarqueurs=&quot;start&quot;` (défaut,
+au-dessus du titre — zone `__start` du DSFR) ou `&quot;image&quot;` (par-dessus la photo).
+`marqueurImage` reste un slot LIBRE pour une pastille posée sur l&#39;image
+(« Partout en France »), distinct des marqueurs typés.
+
+- **Rythme vertical** calé sur le modèle DSFR (`fr-card__content`) : marges
+  SÉMANTIQUES par relation, pas un `gap` uniforme. Marqueurs **détachés** du
+  titre ; titre **aéré** de sa description ; meta **détachée** en bas, au-dessus
+  du CTA. Ce qui VARIE par taille : titre, padding, rythme. Ce qui reste
+  CONSTANT (lisibilité) : CTA, meta ; la description ne grandit qu&#39;en `lg`.
+- **Fondations ralliées** : `rounded-card` (§3.3), `ring-filet` (§3.5), ombre
+  `shadow-repos → survol` au survol (§3.1), motion de retenue — ombre seule, pas
+  de soulèvement (§3.6).
+
+**Cartes ralliées** (registre canonique, à valeurs lissées) : cartes bénéfices
+(médaillon), amorces home (médaillon + `bloc`/`actionPied`), cartes vedettes
+référentiel (`thematique` + image/médaillon), cartes engagement
+(`thematique` + `as=&quot;button&quot;` → drawer).
+
+**Exception assumée** : `CarteFamilleCompacte` (référentiel) — registre **liste
+horizontale à pastille** (pastille picto à gauche + texte + flèche). Ni l&#39;`image`
+(zone pleine) ni le `medaillon` (en tête de corps) ne reproduisent la pastille
+latérale ; la rallier dénaturerait la carte ou la brique. Laissée ad hoc, à
+réévaluer si un slot « visuel latéral compact » émerge.
+
+&gt; **Garde-fou explorations/IA** : avant de créer une carte, vérifier que
+&gt; `CarteContenu` ne couvre pas le cas (teinte, médaillon, bouton, slots). Une
+&gt; carte ad hoc doit nommer le registre qu&#39;elle ouvre — sinon, c&#39;est une
+&gt; instanciation de la brique pivot.
+
+## Décisions ouvertes
+
+- **Échelle d&#39;élévation** (§3.1) : nombre de rôles, valeurs, articulation avec
+  les 5 rôles de [DDR-005]. À trancher par Lucas avant implémentation.
+- ~~Échelle de surfaces greige (§3.2)~~ — **tranché** : taupe léger, 5e fond
+  `greige` de `SectionVitrine` (token candidat) ; constantes `*_GREIGE` ralliées
+  + toolbar retirée.
+- **Mise en issues** du séquencement : outil non arrêté (Linear suspendu pour
+  raisons d&#39;API ; retour possible à GitHub Issues). **Hors de ce DDR.**
+- **Réconciliation `_data/`** (§3.4).
+
+## Références
+
+[DDR-005] grammaire de surfaces (élévation webapp) · [DDR-011] sas Candidats ·
+[DDR-012]/[DDR-013]/[DDR-014] sujets vitrine · [DDR-016] ménage des explorations.
+</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
       <h2><span class="status-dot dot-ok"></span> Design system/Fondations/Icônes</h2>
       <div class="badges">
         
-        <label for="doc-6-design-system-fondations-ic-nes-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-11-design-system-fondations-ic-nes-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./stories/fondations/Icones.mdx">design-system-fondations-icônes--docs · ./stories/fondations/Icones.mdx</div>
@@ -3894,7 +5981,7 @@ Tout composant thématisable (`ThematiqueTag`, `ThematiqueCard`, `ThematiqueSide
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-6-design-system-fondations-ic-nes-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-11-design-system-fondations-ic-nes-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -4184,169 +6271,10 @@ import CoqIcon from &#39;@client/icons/custom/coq.svg&#39;;
   aria-label="Docs">
   <div class="head">
     <div class="title">
-      <h2><span class="status-dot dot-ok"></span> Design system/Fondations/Palette vitrine</h2>
-      <div class="badges">
-        
-        <label for="doc-7-design-system-fondations-palette-vitrine-docs-content" class="badge ok as-toggle">view content</label>
-      </div>
-    </div>
-    <div class="meta" title="./stories/fondations/PaletteVitrine.mdx">design-system-fondations-palette-vitrine--docs · ./stories/fondations/PaletteVitrine.mdx</div>
-    
-  </div>
-
-  <!-- Hidden toggles must be siblings BEFORE .panels -->
-  
-  <input id="doc-7-design-system-fondations-palette-vitrine-docs-content" class="tg tg-content" type="checkbox" hidden />
-
-  <div class="panels">
-    
-    
-        <div class="panel panel-content">
-          <div class="mdx-content">
-            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
-
-&lt;Meta title=&quot;Design system/Fondations/Palette vitrine&quot; /&gt;
-
-export const Fond = ({ cls, token, hex, label, dark, badge }) =&gt; (
-  &lt;div
-    style={{
-      marginBottom: &#39;1.5rem&#39;,
-      borderRadius: &#39;0.5rem&#39;,
-      overflow: &#39;hidden&#39;,
-      border: &#39;1px solid #e5e5e5&#39;,
-    }}
-  &gt;
-    &lt;div
-      className={cls}
-      style={{
-        height: &#39;4rem&#39;,
-        width: &#39;100%&#39;,
-        background: cls?.startsWith(&#39;#&#39;) ? cls : undefined,
-      }}
-    /&gt;
-    &lt;div style={{ padding: &#39;0.75rem 1rem&#39;, background: &#39;#fff&#39; }}&gt;
-      &lt;code style={{ fontWeight: 700 }}&gt;{cls}&lt;/code&gt;
-      {dark &amp;&amp; (
-        &lt;span
-          style={{
-            marginLeft: &#39;0.5rem&#39;,
-            fontSize: &#39;0.75rem&#39;,
-            background: &#39;#1e1e1e&#39;,
-            color: &#39;#fff&#39;,
-            borderRadius: &#39;0.25rem&#39;,
-            padding: &#39;0.1rem 0.4rem&#39;,
-          }}
-        &gt;
-          fond sombre
-        &lt;/span&gt;
-      )}
-      {badge &amp;&amp; (
-        &lt;span
-          style={{
-            marginLeft: &#39;0.5rem&#39;,
-            fontSize: &#39;0.75rem&#39;,
-            background: &#39;#000091&#39;,
-            color: &#39;#fff&#39;,
-            borderRadius: &#39;0.25rem&#39;,
-            padding: &#39;0.1rem 0.4rem&#39;,
-          }}
-        &gt;
-          {badge}
-        &lt;/span&gt;
-      )}
-      &lt;br /&gt;
-      &lt;span style={{ color: &#39;#6b7280&#39;, fontSize: &#39;0.875rem&#39; }}&gt;
-        &lt;code&gt;{token}&lt;/code&gt; → &lt;code&gt;{hex}&lt;/code&gt;
-      &lt;/span&gt;
-      &lt;br /&gt;
-      &lt;span style={{ color: &#39;#6b7280&#39;, fontSize: &#39;0.875rem&#39; }}&gt;{label}&lt;/span&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-);
-
-# Palette vitrine
-
-Quatre fonds canoniques + un fond thématique ponctuel. Le ton du texte est piloté automatiquement par la brique `SectionVitrine`.
-
-## Les fonds canoniques
-
-&lt;Fond
-  cls=&quot;bg-dsfr-background-default-grey&quot;
-  token=&quot;--color-dsfr-background-default-grey&quot;
-  hex=&quot;#ffffff&quot;
-  label=&quot;Fond par défaut — page et sections principales (rôle « white »)&quot;
-/&gt;
-
-&lt;Fond
-  cls=&quot;bg-dsfr-background-alt-grey&quot;
-  token=&quot;--color-dsfr-background-alt-grey&quot;
-  hex=&quot;#f6f6f6&quot;
-  label=&quot;Alternance neutre (rôle « alt-grey »)&quot;
-  badge=&quot;alt 1&quot;
-/&gt;
-
-&lt;Fond
-  cls=&quot;bg-dsfr-background-alt-blue-france&quot;
-  token=&quot;--color-dsfr-background-alt-blue-france&quot;
-  hex=&quot;#f5f5fe&quot;
-  label=&quot;Alternance identitaire bleu pâle (rôle « alt-blue »)&quot;
-  badge=&quot;alt 2&quot;
-/&gt;
-
-&lt;Fond
-  cls=&quot;bg-dsfr-interactive-action-high-blue-france&quot;
-  dark
-  token=&quot;--color-dsfr-background-action-high-blue-france&quot;
-  hex=&quot;#000091&quot;
-  label=&quot;Hero et panneau CTA fort (rôle « blue ») — texte blanc obligatoire&quot;
-/&gt;
-
-## Fond thématique (ponctuel)
-
-Une section peut être ponctuellement habillée d&#39;une **teinte thématique pastel** issue de la palette des thématiques (DDR-003).
-
-&lt;Fond
-  cls=&quot;#fef4f2&quot;
-  token=&quot;--thematique-bg&quot;
-  hex=&quot;valeur réelle injectée par ThematiqueScope&quot;
-  label=&quot;Exemple Figma node 2060:10039 — pastel posé via --thematique-bg, eyebrow en --thematique-main&quot;
-/&gt;
-
-## Usage via la brique `SectionVitrine`
-
-Le rôle de fond est porté par la prop `fond` de `SectionVitrine`, qui résout la classe DSFR correspondante et impose le ton de texte adapté. Aucune classe `fr-*` structurelle n&#39;est manipulée par le composant.
-
-```tsx
-import { SectionVitrine } from &#39;@client/composants/vitrine/section-vitrine&#39;;
-import { ThematiqueScope } from &#39;@client/composants/shared/thematique-scope&#39;;
-
-&lt;main&gt;
-  &lt;SectionVitrine fond=&quot;blue&quot;&gt;Hero&lt;/SectionVitrine&gt;
-  &lt;SectionVitrine fond=&quot;white&quot;&gt;Contenu principal&lt;/SectionVitrine&gt;
-  &lt;SectionVitrine fond=&quot;alt-grey&quot;&gt;Alternance neutre&lt;/SectionVitrine&gt;
-  &lt;SectionVitrine fond=&quot;alt-blue&quot;&gt;Alternance identitaire&lt;/SectionVitrine&gt;
-  &lt;ThematiqueScope etiquette={{ color1: t.color1, color2: t.color2 }}&gt;
-    &lt;SectionVitrine fond=&quot;thematique&quot; accent=&quot;var(--thematique-bg)&quot;&gt;
-      Section thématique « Jeunes » (ponctuelle)
-    &lt;/SectionVitrine&gt;
-  &lt;/ThematiqueScope&gt;
-  &lt;SectionVitrine fond=&quot;blue&quot;&gt;Panneau CTA final&lt;/SectionVitrine&gt;
-&lt;/main&gt;;
-```</code></pre>
-          </div>
-        </div>
-  </div>
-</article>
-<article
-  class="card is-doc no-doc-error"
-  role="listitem"
-  aria-label="Docs">
-  <div class="head">
-    <div class="title">
       <h2><span class="status-dot dot-ok"></span> Design system/Fondations/Tokens espace membre</h2>
       <div class="badges">
         
-        <label for="doc-8-design-system-fondations-tokens-espace-membre-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-12-design-system-fondations-tokens-espace-membre-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./stories/fondations/TokensEspaceMembre.mdx">design-system-fondations-tokens-espace-membre--docs · ./stories/fondations/TokensEspaceMembre.mdx</div>
@@ -4355,7 +6283,7 @@ import { ThematiqueScope } from &#39;@client/composants/shared/thematique-scope&
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-8-design-system-fondations-tokens-espace-membre-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-12-design-system-fondations-tokens-espace-membre-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -4561,7 +6489,7 @@ Ces tokens permettent d&#39;utiliser les couleurs DSFR **dans les classes Tailwi
       <h2><span class="status-dot dot-ok"></span> Design system/Fondations/Typographie</h2>
       <div class="badges">
         
-        <label for="doc-9-design-system-fondations-typographie-docs-content" class="badge ok as-toggle">view content</label>
+        <label for="doc-13-design-system-fondations-typographie-docs-content" class="badge ok as-toggle">view content</label>
       </div>
     </div>
     <div class="meta" title="./stories/fondations/Typographie.mdx">design-system-fondations-typographie--docs · ./stories/fondations/Typographie.mdx</div>
@@ -4570,7 +6498,7 @@ Ces tokens permettent d&#39;utiliser les couleurs DSFR **dans les classes Tailwi
 
   <!-- Hidden toggles must be siblings BEFORE .panels -->
   
-  <input id="doc-9-design-system-fondations-typographie-docs-content" class="tg tg-content" type="checkbox" hidden />
+  <input id="doc-13-design-system-fondations-typographie-docs-content" class="tg tg-content" type="checkbox" hidden />
 
   <div class="panels">
     
@@ -4692,6 +6620,165 @@ Classes Tailwind (`text-*`) exposées sur la police Marianne via `--font-mariann
     /&gt;
   &lt;/div&gt;
 &lt;/Unstyled&gt;</code></pre>
+          </div>
+        </div>
+  </div>
+</article>
+<article
+  class="card is-doc no-doc-error"
+  role="listitem"
+  aria-label="Docs">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-ok"></span> Candidats/Vitrine/Fondations/Palette vitrine</h2>
+      <div class="badges">
+        
+        <label for="doc-14-candidats-vitrine-fondations-palette-vitrine-docs-content" class="badge ok as-toggle">view content</label>
+      </div>
+    </div>
+    <div class="meta" title="./stories/candidats/vitrine/fondations/PaletteVitrine.mdx">candidats-vitrine-fondations-palette-vitrine--docs · ./stories/candidats/vitrine/fondations/PaletteVitrine.mdx</div>
+    
+  </div>
+
+  <!-- Hidden toggles must be siblings BEFORE .panels -->
+  
+  <input id="doc-14-candidats-vitrine-fondations-palette-vitrine-docs-content" class="tg tg-content" type="checkbox" hidden />
+
+  <div class="panels">
+    
+    
+        <div class="panel panel-content">
+          <div class="mdx-content">
+            <pre><code>import { Meta } from &#39;@storybook/addon-docs/blocks&#39;;
+
+&lt;Meta title=&quot;Candidats/Vitrine/Fondations/Palette vitrine&quot; /&gt;
+
+export const Fond = ({ cls, token, hex, label, dark, badge }) =&gt; (
+  &lt;div
+    style={{
+      marginBottom: &#39;1.5rem&#39;,
+      borderRadius: &#39;0.5rem&#39;,
+      overflow: &#39;hidden&#39;,
+      border: &#39;1px solid #e5e5e5&#39;,
+    }}
+  &gt;
+    &lt;div
+      className={cls}
+      style={{
+        height: &#39;4rem&#39;,
+        width: &#39;100%&#39;,
+        background: cls?.startsWith(&#39;#&#39;) ? cls : undefined,
+      }}
+    /&gt;
+    &lt;div style={{ padding: &#39;0.75rem 1rem&#39;, background: &#39;#fff&#39; }}&gt;
+      &lt;code style={{ fontWeight: 700 }}&gt;{cls}&lt;/code&gt;
+      {dark &amp;&amp; (
+        &lt;span
+          style={{
+            marginLeft: &#39;0.5rem&#39;,
+            fontSize: &#39;0.75rem&#39;,
+            background: &#39;#1e1e1e&#39;,
+            color: &#39;#fff&#39;,
+            borderRadius: &#39;0.25rem&#39;,
+            padding: &#39;0.1rem 0.4rem&#39;,
+          }}
+        &gt;
+          fond sombre
+        &lt;/span&gt;
+      )}
+      {badge &amp;&amp; (
+        &lt;span
+          style={{
+            marginLeft: &#39;0.5rem&#39;,
+            fontSize: &#39;0.75rem&#39;,
+            background: &#39;#000091&#39;,
+            color: &#39;#fff&#39;,
+            borderRadius: &#39;0.25rem&#39;,
+            padding: &#39;0.1rem 0.4rem&#39;,
+          }}
+        &gt;
+          {badge}
+        &lt;/span&gt;
+      )}
+      &lt;br /&gt;
+      &lt;span style={{ color: &#39;#6b7280&#39;, fontSize: &#39;0.875rem&#39; }}&gt;
+        &lt;code&gt;{token}&lt;/code&gt; → &lt;code&gt;{hex}&lt;/code&gt;
+      &lt;/span&gt;
+      &lt;br /&gt;
+      &lt;span style={{ color: &#39;#6b7280&#39;, fontSize: &#39;0.875rem&#39; }}&gt;{label}&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);
+
+# Palette vitrine
+
+Quatre fonds canoniques + un fond thématique ponctuel. Le ton du texte est piloté automatiquement par la brique `SectionVitrine`.
+
+## Les fonds canoniques
+
+&lt;Fond
+  cls=&quot;bg-dsfr-background-default-grey&quot;
+  token=&quot;--color-dsfr-background-default-grey&quot;
+  hex=&quot;#ffffff&quot;
+  label=&quot;Fond par défaut — page et sections principales (rôle « white »)&quot;
+/&gt;
+
+&lt;Fond
+  cls=&quot;bg-surface-greige&quot;
+  token=&quot;--color-surface-greige&quot;
+  hex=&quot;#faf8f3&quot;
+  label=&quot;Alternance neutre chaude (rôle « greige » — remplace l&#39;ancien « alt-grey » froid, A2/DDR-019)&quot;
+  badge=&quot;alt 1&quot;
+/&gt;
+
+&lt;Fond
+  cls=&quot;bg-dsfr-background-alt-blue-france&quot;
+  token=&quot;--color-dsfr-background-alt-blue-france&quot;
+  hex=&quot;#f5f5fe&quot;
+  label=&quot;Alternance identitaire bleu pâle (rôle « alt-blue »)&quot;
+  badge=&quot;alt 2&quot;
+/&gt;
+
+&lt;Fond
+  cls=&quot;bg-dsfr-interactive-action-high-blue-france&quot;
+  dark
+  token=&quot;--color-dsfr-background-action-high-blue-france&quot;
+  hex=&quot;#000091&quot;
+  label=&quot;Hero et panneau CTA fort (rôle « blue ») — texte blanc obligatoire&quot;
+/&gt;
+
+## Fond thématique (ponctuel)
+
+Une section peut être ponctuellement habillée d&#39;une **teinte thématique pastel** issue de la palette des thématiques (DDR-003).
+
+&lt;Fond
+  cls=&quot;#fef4f2&quot;
+  token=&quot;--thematique-bg&quot;
+  hex=&quot;valeur réelle injectée par ThematiqueScope&quot;
+  label=&quot;Exemple Figma node 2060:10039 — pastel posé via --thematique-bg, eyebrow en --thematique-main&quot;
+/&gt;
+
+## Usage via la brique `SectionVitrine`
+
+Le rôle de fond est porté par la prop `fond` de `SectionVitrine`, qui résout la classe DSFR correspondante et impose le ton de texte adapté. Aucune classe `fr-*` structurelle n&#39;est manipulée par le composant.
+
+```tsx
+import { SectionVitrine } from &#39;@candidats/vitrine/socle-vitrine/briques/section-vitrine&#39;;
+import { ThematiqueScope } from &#39;@client/composants/shared/thematique-scope&#39;;
+
+&lt;main&gt;
+  &lt;SectionVitrine fond=&quot;blue&quot;&gt;Hero&lt;/SectionVitrine&gt;
+  &lt;SectionVitrine fond=&quot;white&quot;&gt;Contenu principal&lt;/SectionVitrine&gt;
+  &lt;SectionVitrine fond=&quot;greige&quot;&gt;Alternance neutre (chaude)&lt;/SectionVitrine&gt;
+  &lt;SectionVitrine fond=&quot;alt-blue&quot;&gt;Alternance identitaire&lt;/SectionVitrine&gt;
+  &lt;ThematiqueScope etiquette={{ color1: t.color1, color2: t.color2 }}&gt;
+    &lt;SectionVitrine fond=&quot;thematique&quot; accent=&quot;var(--thematique-bg)&quot;&gt;
+      Section thématique « Jeunes » (ponctuelle)
+    &lt;/SectionVitrine&gt;
+  &lt;/ThematiqueScope&gt;
+  &lt;SectionVitrine fond=&quot;blue&quot;&gt;Panneau CTA final&lt;/SectionVitrine&gt;
+&lt;/main&gt;;
+```</code></pre>
           </div>
         </div>
   </div>
